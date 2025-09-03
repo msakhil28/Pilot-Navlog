@@ -1,0 +1,37 @@
+<div class="flex flex-col gap-8 md:flex-row">
+  <!-- Input Form -->
+  <div class="w-full md:w-1/2">
+    <h2 class="text-2xl font-semibold mb-4 text-white">Fuel Planner</h2>
+    <form class="space-y-6">
+      <div>
+        <label for="cruise-burn" class="block text-sm font-medium text-slate-300">Cruise Fuel Burn (gal/hr)</label>
+        <input type="number" [(ngModel)]="cruiseBurn" name="cruise-burn" class="mt-1 w-full bg-slate-700 border border-slate-600 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+      </div>
+      <div>
+        <label for="cruise-time" class="block text-sm font-medium text-slate-300">Cruise Time (minutes)</label>
+        <input type="number" [(ngModel)]="cruiseTime" name="cruise-time" class="mt-1 w-full bg-slate-700 border border-slate-600 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+      </div>
+      <div>
+        <label for="climb-fuel" class="block text-sm font-medium text-slate-300">Taxi & Climb Fuel (gal)</label>
+        <input type="number" [(ngModel)]="climbFuel" name="climb-fuel" class="mt-1 w-full bg-slate-700 border border-slate-600 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+      </div>
+      <div>
+        <label for="reserve-time" class="block text-sm font-medium text-slate-300">Reserve Time (minutes)</label>
+        <input type="number" [(ngModel)]="reserveTime" name="reserve-time" class="mt-1 w-full bg-slate-700 border border-slate-600 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+      </div>
+    </form>
+  </div>
+
+  <!-- Results Display -->
+  <div class="w-full md:w-1/2 flex flex-col gap-6">
+    <div class="bg-slate-900 p-6 rounded-lg">
+      <h3 class="text-lg font-medium text-slate-400 mb-4">Fuel Breakdown</h3>
+      <div class="space-y-3 text-lg">
+        <div class="flex justify-between"><span>Taxi & Climb:</span> <span>{{ climbFuel() }} gal</span></div>
+        <div class="flex justify-between"><span>Cruise:</span> <span>{{ cruiseFuel().toFixed(1) }} gal</span></div>
+        <div class="flex justify-between border-b border-slate-700 pb-3"><span>Reserve:</span> <span>{{ reserveFuel().toFixed(1) }} gal</span></div>
+        <div class="flex justify-between font-bold text-white pt-2"><span>Total Required:</span> <span>{{ totalFuel().toFixed(1) }} gal</span></div>
+      </div>
+    </div>
+  </div>
+</div>

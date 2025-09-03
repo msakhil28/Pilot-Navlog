@@ -1,0 +1,39 @@
+<div class="min-h-screen bg-slate-900 text-gray-200 flex flex-col items-center p-4 sm:p-6 lg:p-8">
+  <div class="w-full max-w-7xl">
+    <header class="text-center mb-8">
+      <h1 class="text-4xl font-bold text-white tracking-tight">Pilot's Dashboard</h1>
+      <p class="text-slate-400 mt-2">Your essential tools for flight planning.</p>
+    </header>
+
+    <div class="mb-6">
+      <div class="flex border-b border-slate-700">
+        <button
+          (click)="setView('navlog')"
+          [class]="activeView() === 'navlog' ? 'border-blue-500 text-white' : 'border-transparent text-slate-400 hover:text-white hover:border-slate-500'"
+          class="py-4 px-6 font-medium border-b-2 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-t-md">
+          Navlog
+        </button>
+        <button
+          (click)="setView('calculator')"
+          [class]="activeView() === 'calculator' ? 'border-blue-500 text-white' : 'border-transparent text-slate-400 hover:text-white hover:border-slate-500'"
+          class="py-4 px-6 font-medium border-b-2 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-t-md">
+          Calculators
+        </button>
+      </div>
+    </div>
+
+    <main class="bg-slate-800 rounded-lg shadow-2xl p-4 sm:p-6">
+      @switch (activeView()) {
+        @case ('navlog') {
+          <app-navlog></app-navlog>
+        }
+        @case ('calculator') {
+          <app-calculators-hub></app-calculators-hub>
+        }
+      }
+    </main>
+     <footer class="text-center mt-8 text-slate-500 text-sm">
+      <p>Fly Safe. This tool is for educational purposes only.</p>
+    </footer>
+  </div>
+</div>

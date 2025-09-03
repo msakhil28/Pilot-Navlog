@@ -1,0 +1,5 @@
+{
+  "name": "Pilot Navlog & Calculator",
+  "description": "A flight navigation log and performance calculator for student pilots. Plan your flight legs and calculate Pressure and Density Altitude for safe flying.",
+  "requestFramePermissions": []
+}
