@@ -1,69 +1,68 @@
-
 <div>
-  <h2 class="text-2xl font-semibold mb-4 text-white">Navigation Log</h2>
-  <div class="overflow-x-auto rounded-lg border border-slate-700">
-    <table class="min-w-full divide-y divide-slate-700">
-      <thead class="bg-slate-900/50">
+  <h2 class="text-2xl font-semibold mb-4 text-[#e6edf3]">Navigation Log</h2>
+  <div class="overflow-x-auto rounded-lg border border-[#30363d]">
+    <table class="min-w-full divide-y divide-[#30363d]">
+      <thead class="bg-[#161b22]">
         <tr>
-          <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-slate-300 whitespace-nowrap">Waypoint</th>
-          <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-slate-300 whitespace-nowrap">VOR Ident</th>
-          <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-slate-300 whitespace-nowrap">VOR Freq</th>
-          <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-slate-300 whitespace-nowrap">Course</th>
-          <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-slate-300 whitespace-nowrap">Wind Dir</th>
-          <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-slate-300 whitespace-nowrap">Wind Vel</th>
-          <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-slate-300 whitespace-nowrap">TAS</th>
-          <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-slate-300 whitespace-nowrap">Altitude</th>
-          <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-slate-300 whitespace-nowrap">TC</th>
-          <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-slate-300 whitespace-nowrap">WCA</th>
-          <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-slate-300 whitespace-nowrap">TH</th>
-          <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-slate-300 whitespace-nowrap">Var</th>
-          <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-slate-300 whitespace-nowrap">MH</th>
-          <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-slate-300 whitespace-nowrap">Dist</th>
-          <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-slate-300 whitespace-nowrap">GS</th>
-          <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-slate-300 whitespace-nowrap">ETE</th>
-          <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-slate-300 whitespace-nowrap">GPH</th>
-          <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-slate-300 whitespace-nowrap">Fuel</th>
+          <th scope="col" class="py-3.5 px-3 text-left text-xs font-semibold text-[#7d8590] uppercase tracking-wider whitespace-nowrap">Waypoint</th>
+          <th scope="col" class="py-3.5 px-3 text-left text-xs font-semibold text-[#7d8590] uppercase tracking-wider whitespace-nowrap">VOR Ident</th>
+          <th scope="col" class="py-3.5 px-3 text-left text-xs font-semibold text-[#7d8590] uppercase tracking-wider whitespace-nowrap">VOR Freq</th>
+          <th scope="col" class="py-3.5 px-3 text-left text-xs font-semibold text-[#7d8590] uppercase tracking-wider whitespace-nowrap">Course</th>
+          <th scope="col" class="py-3.5 px-3 text-left text-xs font-semibold text-[#7d8590] uppercase tracking-wider whitespace-nowrap">Wind Dir</th>
+          <th scope="col" class="py-3.5 px-3 text-left text-xs font-semibold text-[#7d8590] uppercase tracking-wider whitespace-nowrap">Wind Vel</th>
+          <th scope="col" class="py-3.5 px-3 text-left text-xs font-semibold text-[#7d8590] uppercase tracking-wider whitespace-nowrap">TAS</th>
+          <th scope="col" class="py-3.5 px-3 text-left text-xs font-semibold text-[#7d8590] uppercase tracking-wider whitespace-nowrap">Altitude</th>
+          <th scope="col" class="py-3.5 px-3 text-left text-xs font-semibold text-[#7d8590] uppercase tracking-wider whitespace-nowrap">TC</th>
+          <th scope="col" class="py-3.5 px-3 text-left text-xs font-semibold text-[#7d8590] uppercase tracking-wider whitespace-nowrap">WCA</th>
+          <th scope="col" class="py-3.5 px-3 text-left text-xs font-semibold text-[#7d8590] uppercase tracking-wider whitespace-nowrap">TH</th>
+          <th scope="col" class="py-3.5 px-3 text-left text-xs font-semibold text-[#7d8590] uppercase tracking-wider whitespace-nowrap">Var</th>
+          <th scope="col" class="py-3.5 px-3 text-left text-xs font-semibold text-[#7d8590] uppercase tracking-wider whitespace-nowrap">MH</th>
+          <th scope="col" class="py-3.5 px-3 text-left text-xs font-semibold text-[#7d8590] uppercase tracking-wider whitespace-nowrap">Dist</th>
+          <th scope="col" class="py-3.5 px-3 text-left text-xs font-semibold text-[#7d8590] uppercase tracking-wider whitespace-nowrap">GS</th>
+          <th scope="col" class="py-3.5 px-3 text-left text-xs font-semibold text-[#7d8590] uppercase tracking-wider whitespace-nowrap">ETE</th>
+          <th scope="col" class="py-3.5 px-3 text-left text-xs font-semibold text-[#7d8590] uppercase tracking-wider whitespace-nowrap">GPH</th>
+          <th scope="col" class="py-3.5 px-3 text-left text-xs font-semibold text-[#7d8590] uppercase tracking-wider whitespace-nowrap">Fuel</th>
           <th scope="col" class="relative py-3.5 pl-3 pr-4"><span class="sr-only">Remove</span></th>
         </tr>
       </thead>
-      <tbody class="divide-y divide-slate-700 bg-slate-800">
+      <tbody class="divide-y divide-[#30363d]">
         @for (row of navlogRows(); track trackById(index, row); let index = $index) {
-          <tr class="hover:bg-slate-700/50">
-            <td class="p-2 whitespace-nowrap"><input type="text" [(ngModel)]="row.waypoint" name="waypoint-{{row.id}}" class="w-28 bg-slate-700 border border-slate-600 rounded-md p-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></td>
-            <td class="p-2 whitespace-nowrap"><input type="text" [(ngModel)]="row.vorIdent" name="vorIdent-{{row.id}}" class="w-24 bg-slate-700 border border-slate-600 rounded-md p-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></td>
-            <td class="p-2 whitespace-nowrap"><input type="number" step="0.01" [(ngModel)]="row.vorFreq" name="vorFreq-{{row.id}}" class="w-24 bg-slate-700 border border-slate-600 rounded-md p-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></td>
-            <td class="p-2 whitespace-nowrap"><input type="number" [(ngModel)]="row.course" (ngModelChange)="calculateRow(row.id)" name="course-{{row.id}}" class="w-20 bg-slate-700 border border-slate-600 rounded-md p-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></td>
-            <td class="p-2 whitespace-nowrap"><input type="number" [(ngModel)]="row.windDir" (ngModelChange)="calculateRow(row.id)" name="windDir-{{row.id}}" class="w-20 bg-slate-700 border border-slate-600 rounded-md p-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></td>
-            <td class="p-2 whitespace-nowrap"><input type="number" [(ngModel)]="row.windVel" (ngModelChange)="calculateRow(row.id)" name="windVel-{{row.id}}" class="w-20 bg-slate-700 border border-slate-600 rounded-md p-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></td>
-            <td class="p-2 whitespace-nowrap"><input type="number" [(ngModel)]="row.tas" (ngModelChange)="calculateRow(row.id)" name="tas-{{row.id}}" class="w-20 bg-slate-700 border border-slate-600 rounded-md p-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></td>
-            <td class="p-2 whitespace-nowrap"><input type="number" [(ngModel)]="row.altitude" name="altitude-{{row.id}}" class="w-24 bg-slate-700 border border-slate-600 rounded-md p-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></td>
-            <td class="p-2 whitespace-nowrap"><input type="number" [ngModel]="row.tc" name="tc-{{row.id}}" class="w-20 bg-slate-700/50 border-slate-600/50 rounded-md p-2 text-slate-300 focus:outline-none sm:text-sm" disabled></td>
-            <td class="p-2 whitespace-nowrap"><input type="number" [ngModel]="row.wca" name="wca-{{row.id}}" class="w-20 bg-slate-700/50 border-slate-600/50 rounded-md p-2 text-slate-300 focus:outline-none sm:text-sm" disabled></td>
-            <td class="p-2 whitespace-nowrap"><input type="number" [ngModel]="row.th" name="th-{{row.id}}" class="w-20 bg-slate-700/50 border-slate-600/50 rounded-md p-2 text-slate-300 focus:outline-none sm:text-sm" disabled></td>
-            <td class="p-2 whitespace-nowrap"><input type="number" [(ngModel)]="row.variation" (ngModelChange)="calculateRow(row.id)" name="variation-{{row.id}}" class="w-20 bg-slate-700 border border-slate-600 rounded-md p-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></td>
-            <td class="p-2 whitespace-nowrap"><input type="number" [ngModel]="row.mh" name="mh-{{row.id}}" class="w-20 bg-slate-700/50 border-slate-600/50 rounded-md p-2 text-slate-300 focus:outline-none sm:text-sm" disabled></td>
-            <td class="p-2 whitespace-nowrap"><input type="number" [(ngModel)]="row.distance" (ngModelChange)="calculateRow(row.id)" name="distance-{{row.id}}" class="w-20 bg-slate-700 border border-slate-600 rounded-md p-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></td>
-            <td class="p-2 whitespace-nowrap"><input type="number" [ngModel]="row.gs" name="gs-{{row.id}}" class="w-20 bg-slate-700/50 border-slate-600/50 rounded-md p-2 text-slate-300 focus:outline-none sm:text-sm" disabled></td>
-            <td class="p-2 whitespace-nowrap"><input type="number" [ngModel]="row.ete" name="ete-{{row.id}}" class="w-20 bg-slate-700/50 border-slate-600/50 rounded-md p-2 text-slate-300 focus:outline-none sm:text-sm" disabled></td>
-            <td class="p-2 whitespace-nowrap"><input type="number" [(ngModel)]="row.gph" (ngModelChange)="calculateRow(row.id)" name="gph-{{row.id}}" class="w-20 bg-slate-700 border border-slate-600 rounded-md p-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></td>
-            <td class="p-2 whitespace-nowrap"><input type="number" [ngModel]="row.fuel" name="fuel-{{row.id}}" class="w-20 bg-slate-700/50 border-slate-600/50 rounded-md p-2 text-slate-300 focus:outline-none sm:text-sm" disabled></td>
+          <tr class="hover:bg-[#30363d]/30">
+            <td class="p-2 whitespace-nowrap"><input type="text" [(ngModel)]="row.waypoint" name="waypoint-{{row.id}}" class="w-full min-w-[7rem] bg-[#0d1117] border border-[#30363d] rounded-md p-2 text-[#e6edf3] focus:outline-none focus:ring-2 focus:ring-[#2f81f7] focus:border-[#2f81f7] sm:text-sm"></td>
+            <td class="p-2 whitespace-nowrap"><input type="text" [(ngModel)]="row.vorIdent" name="vorIdent-{{row.id}}" class="w-full min-w-[6rem] bg-[#0d1117] border border-[#30363d] rounded-md p-2 text-[#e6edf3] focus:outline-none focus:ring-2 focus:ring-[#2f81f7] focus:border-[#2f81f7] sm:text-sm"></td>
+            <td class="p-2 whitespace-nowrap"><input type="number" step="0.01" [(ngModel)]="row.vorFreq" name="vorFreq-{{row.id}}" class="w-full min-w-[6rem] bg-[#0d1117] border border-[#30363d] rounded-md p-2 text-[#e6edf3] focus:outline-none focus:ring-2 focus:ring-[#2f81f7] focus:border-[#2f81f7] sm:text-sm"></td>
+            <td class="p-2 whitespace-nowrap"><input type="number" [(ngModel)]="row.course" (ngModelChange)="calculateRow(row.id)" name="course-{{row.id}}" class="w-full min-w-[5rem] bg-[#0d1117] border border-[#30363d] rounded-md p-2 text-[#e6edf3] focus:outline-none focus:ring-2 focus:ring-[#2f81f7] focus:border-[#2f81f7] sm:text-sm"></td>
+            <td class="p-2 whitespace-nowrap"><input type="number" [(ngModel)]="row.windDir" (ngModelChange)="calculateRow(row.id)" name="windDir-{{row.id}}" class="w-full min-w-[5rem] bg-[#0d1117] border border-[#30363d] rounded-md p-2 text-[#e6edf3] focus:outline-none focus:ring-2 focus:ring-[#2f81f7] focus:border-[#2f81f7] sm:text-sm"></td>
+            <td class="p-2 whitespace-nowrap"><input type="number" [(ngModel)]="row.windVel" (ngModelChange)="calculateRow(row.id)" name="windVel-{{row.id}}" class="w-full min-w-[5rem] bg-[#0d1117] border border-[#30363d] rounded-md p-2 text-[#e6edf3] focus:outline-none focus:ring-2 focus:ring-[#2f81f7] focus:border-[#2f81f7] sm:text-sm"></td>
+            <td class="p-2 whitespace-nowrap"><input type="number" [(ngModel)]="row.tas" (ngModelChange)="calculateRow(row.id)" name="tas-{{row.id}}" class="w-full min-w-[5rem] bg-[#0d1117] border border-[#30363d] rounded-md p-2 text-[#e6edf3] focus:outline-none focus:ring-2 focus:ring-[#2f81f7] focus:border-[#2f81f7] sm:text-sm"></td>
+            <td class="p-2 whitespace-nowrap"><input type="number" [(ngModel)]="row.altitude" name="altitude-{{row.id}}" class="w-full min-w-[6rem] bg-[#0d1117] border border-[#30363d] rounded-md p-2 text-[#e6edf3] focus:outline-none focus:ring-2 focus:ring-[#2f81f7] focus:border-[#2f81f7] sm:text-sm"></td>
+            <td class="p-2 whitespace-nowrap"><input readonly type="number" [ngModel]="row.tc" name="tc-{{row.id}}" class="w-full min-w-[5rem] bg-transparent rounded-md p-2 text-[#e6edf3] focus:outline-none sm:text-sm"></td>
+            <td class="p-2 whitespace-nowrap"><input readonly type="number" [ngModel]="row.wca" name="wca-{{row.id}}" class="w-full min-w-[5rem] bg-transparent rounded-md p-2 text-[#e6edf3] focus:outline-none sm:text-sm"></td>
+            <td class="p-2 whitespace-nowrap"><input readonly type="number" [ngModel]="row.th" name="th-{{row.id}}" class="w-full min-w-[5rem] bg-transparent rounded-md p-2 text-[#e6edf3] focus:outline-none sm:text-sm"></td>
+            <td class="p-2 whitespace-nowrap"><input type="number" [(ngModel)]="row.variation" (ngModelChange)="calculateRow(row.id)" name="variation-{{row.id}}" class="w-full min-w-[5rem] bg-[#0d1117] border border-[#30363d] rounded-md p-2 text-[#e6edf3] focus:outline-none focus:ring-2 focus:ring-[#2f81f7] focus:border-[#2f81f7] sm:text-sm"></td>
+            <td class="p-2 whitespace-nowrap"><input readonly type="number" [ngModel]="row.mh" name="mh-{{row.id}}" class="w-full min-w-[5rem] bg-transparent rounded-md p-2 text-[#e6edf3] focus:outline-none sm:text-sm"></td>
+            <td class="p-2 whitespace-nowrap"><input type="number" [(ngModel)]="row.distance" (ngModelChange)="calculateRow(row.id)" name="distance-{{row.id}}" class="w-full min-w-[5rem] bg-[#0d1117] border border-[#30363d] rounded-md p-2 text-[#e6edf3] focus:outline-none focus:ring-2 focus:ring-[#2f81f7] focus:border-[#2f81f7] sm:text-sm"></td>
+            <td class="p-2 whitespace-nowrap"><input readonly type="number" [ngModel]="row.gs" name="gs-{{row.id}}" class="w-full min-w-[5rem] bg-transparent rounded-md p-2 text-[#e6edf3] focus:outline-none sm:text-sm"></td>
+            <td class="p-2 whitespace-nowrap"><input readonly type="number" [ngModel]="row.ete" name="ete-{{row.id}}" class="w-full min-w-[5rem] bg-transparent rounded-md p-2 text-[#e6edf3] focus:outline-none sm:text-sm"></td>
+            <td class="p-2 whitespace-nowrap"><input type="number" [(ngModel)]="row.gph" (ngModelChange)="calculateRow(row.id)" name="gph-{{row.id}}" class="w-full min-w-[5rem] bg-[#0d1117] border border-[#30363d] rounded-md p-2 text-[#e6edf3] focus:outline-none focus:ring-2 focus:ring-[#2f81f7] focus:border-[#2f81f7] sm:text-sm"></td>
+            <td class="p-2 whitespace-nowrap"><input readonly type="number" [ngModel]="row.fuel" name="fuel-{{row.id}}" class="w-full min-w-[5rem] bg-transparent rounded-md p-2 text-[#e6edf3] focus:outline-none sm:text-sm"></td>
             <td class="p-2 text-center whitespace-nowrap">
-              <button (click)="removeRow(row.id)" class="text-slate-400 hover:text-red-500 transition-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-slate-800">
+              <button (click)="removeRow(row.id)" class="text-[#7d8590] hover:text-[#f85149] transition-colors p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-[#f85149] focus:ring-offset-2 focus:ring-offset-[#161b22]">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z" clip-rule="evenodd" /></svg>
               </button>
             </td>
           </tr>
         }
       </tbody>
-       <tfoot class="bg-slate-900/50">
+       <tfoot class="bg-[#161b22] border-t-2 border-[#30363d]">
         <tr>
-          <td class="px-3 py-3 text-sm font-semibold text-white whitespace-nowrap">Totals</td>
+          <td class="px-3 py-3 text-sm font-semibold text-[#e6edf3] whitespace-nowrap">Totals</td>
           <td colspan="12"></td>
-          <td class="px-3 py-3 text-sm font-semibold text-white">{{ totalDistance() }}</td>
+          <td class="px-3 py-3 text-sm font-semibold text-[#e6edf3]">{{ totalDistance() }}</td>
           <td></td>
-          <td class="px-3 py-3 text-sm font-semibold text-white">{{ totalEte() }}</td>
+          <td class="px-3 py-3 text-sm font-semibold text-[#e6edf3]">{{ totalEte() }}</td>
           <td></td>
-          <td class="px-3 py-3 text-sm font-semibold text-white">{{ totalFuel().toFixed(1) }}</td>
+          <td class="px-3 py-3 text-sm font-semibold text-[#e6edf3]">{{ totalFuel().toFixed(1) }}</td>
           <td></td>
         </tr>
       </tfoot>
@@ -71,7 +70,7 @@
   </div>
 
   <div class="mt-6">
-    <button (click)="addRow()" class="inline-flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-800">
+    <button (click)="addRow()" class="inline-flex items-center justify-center rounded-md border border-transparent bg-[#238636] px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-[#2ea043] focus:outline-none focus:ring-2 focus:ring-[#2ea043] focus:ring-offset-2 focus:ring-offset-[#161b22]">
       Add Leg
     </button>
   </div>

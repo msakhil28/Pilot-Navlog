@@ -1,11 +1,11 @@
 <div class="flex flex-col gap-8 md:flex-row">
   <!-- Input Form -->
   <div class="w-full md:w-1/2">
-    <h2 class="text-2xl font-semibold mb-4 text-white">Time, Speed, Distance</h2>
+    <h2 class="text-2xl font-semibold mb-4 text-[#e6edf3]">Time, Speed, Distance</h2>
     <form class="space-y-6">
       <div>
-        <label for="calculate" class="block text-sm font-medium text-slate-300">Calculate</label>
-        <select [(ngModel)]="mode" name="calculate" class="mt-1 block w-full bg-slate-700 border border-slate-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+        <label for="calculate" class="block text-sm font-medium text-[#7d8590]">Calculate</label>
+        <select [(ngModel)]="mode" name="calculate" class="mt-1 block w-full bg-[#0d1117] border border-[#30363d] rounded-md shadow-sm py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7] sm:text-sm">
           <option value="time">Time</option>
           <option value="speed">Speed</option>
           <option value="distance">Distance</option>
@@ -13,24 +13,24 @@
       </div>
 
       <div>
-        <label for="time" class="block text-sm font-medium text-slate-300">Time (minutes)</label>
-        <input type="number" [(ngModel)]="time" name="time" [disabled]="mode() === 'time'" [class]="mode() === 'time' ? 'disabled:opacity-50' : ''" class="mt-1 w-full bg-slate-700 border border-slate-600 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+        <label for="time" class="block text-sm font-medium text-[#7d8590]">Time (minutes)</label>
+        <input type="number" [(ngModel)]="time" name="time" [disabled]="mode() === 'time'" [class]="mode() === 'time' ? 'disabled:opacity-50' : ''" class="mt-1 w-full bg-[#0d1117] border border-[#30363d] rounded-md py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7]">
       </div>
        <div>
-        <label for="speed" class="block text-sm font-medium text-slate-300">Speed (knots)</label>
-        <input type="number" [(ngModel)]="speed" name="speed" [disabled]="mode() === 'speed'" [class]="mode() === 'speed' ? 'disabled:opacity-50' : ''" class="mt-1 w-full bg-slate-700 border border-slate-600 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+        <label for="speed" class="block text-sm font-medium text-[#7d8590]">Speed (knots)</label>
+        <input type="number" [(ngModel)]="speed" name="speed" [disabled]="mode() === 'speed'" [class]="mode() === 'speed' ? 'disabled:opacity-50' : ''" class="mt-1 w-full bg-[#0d1117] border border-[#30363d] rounded-md py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7]">
       </div>
        <div>
-        <label for="distance" class="block text-sm font-medium text-slate-300">Distance (nm)</label>
-        <input type="number" [(ngModel)]="distance" name="distance" [disabled]="mode() === 'distance'" [class]="mode() === 'distance' ? 'disabled:opacity-50' : ''" class="mt-1 w-full bg-slate-700 border border-slate-600 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+        <label for="distance" class="block text-sm font-medium text-[#7d8590]">Distance (nm)</label>
+        <input type="number" [(ngModel)]="distance" name="distance" [disabled]="mode() === 'distance'" [class]="mode() === 'distance' ? 'disabled:opacity-50' : ''" class="mt-1 w-full bg-[#0d1117] border border-[#30363d] rounded-md py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7]">
       </div>
     </form>
   </div>
 
   <!-- Results Display -->
   <div class="w-full md:w-1/2 flex items-center justify-center">
-     <div class="bg-slate-900 p-6 rounded-lg text-center w-full">
-      <h3 class="text-lg font-medium text-slate-400 capitalize">{{ mode() }}</h3>
+     <div class="bg-[#0d1117] border border-[#30363d] p-6 rounded-lg text-center w-full">
+      <h3 class="text-lg font-medium text-[#7d8590] capitalize">{{ mode() }}</h3>
       <p class="text-5xl font-bold text-sky-400 mt-2">{{ result() }}</p>
     </div>
   </div>

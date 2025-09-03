@@ -1,12 +1,12 @@
 <div class="flex flex-col md:flex-row gap-8">
   <aside class="md:w-1/4 lg:w-1/5">
-    <h2 class="text-2xl font-semibold mb-4 text-white">Calculators</h2>
+    <h2 class="text-2xl font-semibold mb-4 text-[#e6edf3]">Calculators</h2>
     <nav class="flex flex-col space-y-1">
       @for (calc of calculators; track calc.id) {
         <button 
           (click)="setActiveCalculator(calc.id)"
-          [class]="activeCalculator() === calc.id ? 'bg-blue-600 text-white' : 'text-slate-300 hover:bg-slate-700/50 hover:text-white'"
-          class="w-full text-left px-4 py-2.5 rounded-md text-sm font-medium transition-colors duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-800">
+          [class]="activeCalculator() === calc.id ? 'bg-[#2f81f7] text-white' : 'text-[#e6edf3] hover:bg-[#30363d]/50'"
+          class="w-full text-left px-4 py-2.5 rounded-md text-sm font-medium transition-colors duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#2f81f7] focus:ring-offset-2 focus:ring-offset-[#161b22]">
           {{ calc.name }}
         </button>
       }

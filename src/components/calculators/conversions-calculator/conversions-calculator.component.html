@@ -1,78 +1,78 @@
 <div>
-  <h2 class="text-2xl font-semibold mb-4 text-white">Unit Conversions</h2>
+  <h2 class="text-2xl font-semibold mb-4 text-[#e6edf3]">Unit Conversions</h2>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
     <!-- Temperature -->
-    <div class="bg-slate-900 p-4 rounded-lg">
-      <h3 class="font-semibold text-white mb-3">Temperature</h3>
+    <div class="bg-[#0d1117] border border-[#30363d] p-4 rounded-lg">
+      <h3 class="font-semibold text-[#e6edf3] mb-3">Temperature</h3>
       <div class="space-y-3">
         <div>
-          <label class="block text-sm font-medium text-slate-300">Celsius (°C)</label>
-          <input type="number" [ngModel]="celsius()" (ngModelChange)="onCelsiusChange($event)" name="celsius" class="mt-1 w-full bg-slate-700 border border-slate-600 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          <label class="block text-sm font-medium text-[#7d8590]">Celsius (°C)</label>
+          <input type="number" [ngModel]="celsius()" (ngModelChange)="onCelsiusChange($event)" name="celsius" class="mt-1 w-full bg-[#0d1117] border border-[#30363d] rounded-md py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7]">
         </div>
         <div>
-          <label class="block text-sm font-medium text-slate-300">Fahrenheit (°F)</label>
-          <input type="number" [ngModel]="fahrenheit()" (ngModelChange)="onFahrenheitChange($event)" name="fahrenheit" class="mt-1 w-full bg-slate-700 border border-slate-600 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          <label class="block text-sm font-medium text-[#7d8590]">Fahrenheit (°F)</label>
+          <input type="number" [ngModel]="fahrenheit()" (ngModelChange)="onFahrenheitChange($event)" name="fahrenheit" class="mt-1 w-full bg-[#0d1117] border border-[#30363d] rounded-md py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7]">
         </div>
       </div>
     </div>
 
     <!-- Speed -->
-    <div class="bg-slate-900 p-4 rounded-lg">
-      <h3 class="font-semibold text-white mb-3">Speed</h3>
+    <div class="bg-[#0d1117] border border-[#30363d] p-4 rounded-lg">
+      <h3 class="font-semibold text-[#e6edf3] mb-3">Speed</h3>
       <div class="space-y-3">
         <div>
-          <label class="block text-sm font-medium text-slate-300">Knots (kts)</label>
-          <input type="number" [ngModel]="knots()" (ngModelChange)="onKnotsChange($event)" name="knots" class="mt-1 w-full bg-slate-700 border border-slate-600 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          <label class="block text-sm font-medium text-[#7d8590]">Knots (kts)</label>
+          <input type="number" [ngModel]="knots()" (ngModelChange)="onKnotsChange($event)" name="knots" class="mt-1 w-full bg-[#0d1117] border border-[#30363d] rounded-md py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7]">
         </div>
         <div>
-          <label class="block text-sm font-medium text-slate-300">Miles per Hour (mph)</label>
-          <input type="number" [ngModel]="mph()" (ngModelChange)="onMphChange($event)" name="mph" class="mt-1 w-full bg-slate-700 border border-slate-600 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          <label class="block text-sm font-medium text-[#7d8590]">Miles per Hour (mph)</label>
+          <input type="number" [ngModel]="mph()" (ngModelChange)="onMphChange($event)" name="mph" class="mt-1 w-full bg-[#0d1117] border border-[#30363d] rounded-md py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7]">
         </div>
       </div>
     </div>
 
     <!-- Distance -->
-    <div class="bg-slate-900 p-4 rounded-lg">
-      <h3 class="font-semibold text-white mb-3">Distance</h3>
+    <div class="bg-[#0d1117] border border-[#30363d] p-4 rounded-lg">
+      <h3 class="font-semibold text-[#e6edf3] mb-3">Distance</h3>
       <div class="space-y-3">
         <div>
-          <label class="block text-sm font-medium text-slate-300">Nautical Miles (nm)</label>
-          <input type="number" [ngModel]="nauticalMiles()" (ngModelChange)="onNmChange($event)" name="nm" class="mt-1 w-full bg-slate-700 border border-slate-600 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          <label class="block text-sm font-medium text-[#7d8590]">Nautical Miles (nm)</label>
+          <input type="number" [ngModel]="nauticalMiles()" (ngModelChange)="onNmChange($event)" name="nm" class="mt-1 w-full bg-[#0d1117] border border-[#30363d] rounded-md py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7]">
         </div>
         <div>
-          <label class="block text-sm font-medium text-slate-300">Statute Miles (sm)</label>
-          <input type="number" [ngModel]="statuteMiles()" (ngModelChange)="onSmChange($event)" name="sm" class="mt-1 w-full bg-slate-700 border border-slate-600 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          <label class="block text-sm font-medium text-[#7d8590]">Statute Miles (sm)</label>
+          <input type="number" [ngModel]="statuteMiles()" (ngModelChange)="onSmChange($event)" name="sm" class="mt-1 w-full bg-[#0d1117] border border-[#30363d] rounded-md py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7]">
         </div>
       </div>
     </div>
 
      <!-- Pressure -->
-    <div class="bg-slate-900 p-4 rounded-lg">
-      <h3 class="font-semibold text-white mb-3">Pressure</h3>
+    <div class="bg-[#0d1117] border border-[#30363d] p-4 rounded-lg">
+      <h3 class="font-semibold text-[#e6edf3] mb-3">Pressure</h3>
       <div class="space-y-3">
         <div>
-          <label class="block text-sm font-medium text-slate-300">Inches of Mercury (inHg)</label>
-          <input type="number" [ngModel]="inHg()" (ngModelChange)="onInHgChange($event)" name="inhg" class="mt-1 w-full bg-slate-700 border border-slate-600 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          <label class="block text-sm font-medium text-[#7d8590]">Inches of Mercury (inHg)</label>
+          <input type="number" [ngModel]="inHg()" (ngModelChange)="onInHgChange($event)" name="inhg" class="mt-1 w-full bg-[#0d1117] border border-[#30363d] rounded-md py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7]">
         </div>
         <div>
-          <label class="block text-sm font-medium text-slate-300">Hectopascals (hPa)</label>
-          <input type="number" [ngModel]="hPa()" (ngModelChange)="onHpaChange($event)" name="hpa" class="mt-1 w-full bg-slate-700 border border-slate-600 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          <label class="block text-sm font-medium text-[#7d8590]">Hectopascals (hPa)</label>
+          <input type="number" [ngModel]="hPa()" (ngModelChange)="onHpaChange($event)" name="hpa" class="mt-1 w-full bg-[#0d1117] border border-[#30363d] rounded-md py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7]">
         </div>
       </div>
     </div>
 
     <!-- Altitude / Length -->
-    <div class="bg-slate-900 p-4 rounded-lg">
-      <h3 class="font-semibold text-white mb-3">Altitude / Length</h3>
+    <div class="bg-[#0d1117] border border-[#30363d] p-4 rounded-lg">
+      <h3 class="font-semibold text-[#e6edf3] mb-3">Altitude / Length</h3>
       <div class="space-y-3">
         <div>
-          <label class="block text-sm font-medium text-slate-300">Feet (ft)</label>
-          <input type="number" [ngModel]="feet()" (ngModelChange)="onFeetChange($event)" name="feet" class="mt-1 w-full bg-slate-700 border border-slate-600 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          <label class="block text-sm font-medium text-[#7d8590]">Feet (ft)</label>
+          <input type="number" [ngModel]="feet()" (ngModelChange)="onFeetChange($event)" name="feet" class="mt-1 w-full bg-[#0d1117] border border-[#30363d] rounded-md py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7]">
         </div>
         <div>
-          <label class="block text-sm font-medium text-slate-300">Meters (m)</label>
-          <input type="number" [ngModel]="meters()" (ngModelChange)="onMetersChange($event)" name="meters" class="mt-1 w-full bg-slate-700 border border-slate-600 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+          <label class="block text-sm font-medium text-[#7d8590]">Meters (m)</label>
+          <input type="number" [ngModel]="meters()" (ngModelChange)="onMetersChange($event)" name="meters" class="mt-1 w-full bg-[#0d1117] border border-[#30363d] rounded-md py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7]">
         </div>
       </div>
     </div>
