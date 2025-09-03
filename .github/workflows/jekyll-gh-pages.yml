@@ -28,7 +28,7 @@ jobs:
           cache: 'npm'
 
       - name: Install deps
-        run: npm ci
+        run: npm install
 
       # If you don't know your Angular project name, run:
       # npx ngx-tools project-name (or open angular.json -> "defaultProject")
