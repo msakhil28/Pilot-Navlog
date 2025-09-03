@@ -4,6 +4,7 @@ import { CalculatorsHubComponent } from './components/calculators/calculators-hu
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NavlogComponent, CalculatorsHubComponent]

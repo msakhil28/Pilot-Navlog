@@ -26,6 +26,7 @@ export interface NavlogEntry {
 
 @Component({
   selector: 'app-navlog',
+  standalone: true,
   imports: [FormsModule],
   templateUrl: './navlog.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

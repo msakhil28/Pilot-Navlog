@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-tsd-calculator',
+  standalone: true,
   imports: [FormsModule],
   templateUrl: './tsd-calculator.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

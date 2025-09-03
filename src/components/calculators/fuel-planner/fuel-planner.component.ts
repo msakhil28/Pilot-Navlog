@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-fuel-planner',
+  standalone: true,
   imports: [FormsModule],
   templateUrl: './fuel-planner.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

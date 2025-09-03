@@ -16,6 +16,7 @@ interface Calculator {
 
 @Component({
   selector: 'app-calculators-hub',
+  standalone: true,
   templateUrl: './calculators-hub.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [

@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-tas-calculator',
+  standalone: true,
   imports: [FormsModule],
   templateUrl: './tas-calculator.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

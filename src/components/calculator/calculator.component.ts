@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pa-da-calculator',
+  standalone: true,
   imports: [FormsModule],
   templateUrl: './calculator.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

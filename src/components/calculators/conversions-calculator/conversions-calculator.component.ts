@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-conversions-calculator',
+  standalone: true,
   imports: [FormsModule],
   templateUrl: './conversions-calculator.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

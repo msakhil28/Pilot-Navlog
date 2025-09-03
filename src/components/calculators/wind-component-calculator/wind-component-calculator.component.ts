@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-wind-component-calculator',
+  standalone: true,
   imports: [FormsModule],
   templateUrl: './wind-component-calculator.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
