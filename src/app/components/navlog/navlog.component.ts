@@ -1,29 +1,3 @@
-
-import { Component, ChangeDetectionStrategy, signal, computed } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-
-export interface NavlogEntry {
-  id: number;
-  waypoint: string;
-  vorIdent: string;
-  vorFreq: number | null;
-  course: number | null;
-  windDir: number | null;
-  windVel: number | null;
-  tas: number | null;
-  altitude: number | null;
-  tc: number | null;
-  wca: number | null;
-  th: number | null;
-  variation: number | null;
-  mh: number | null;
-  distance: number | null;
-  gs: number | null;
-  ete: number | null;
-  gph: number | null;
-  fuel: number | null;
-}
-
 @Component({
     selector: 'app-navlog',
     imports: [FormsModule],
@@ -68,7 +42,7 @@ export class NavlogComponent {
   trackById(index: number, item: NavlogEntry): number {
     return item.id;
   }
-  
+
   totalDistance = computed(() => this.navlogRows().reduce((acc, row) => acc + (row.distance || 0), 0));
   totalEte = computed(() => this.navlogRows().reduce((acc, row) => acc + (row.ete || 0), 0));
   totalFuel = computed(() => this.navlogRows().reduce((acc, row) => acc + (row.fuel || 0), 0));
@@ -120,27 +94,41 @@ export class NavlogComponent {
           newRow.th = Math.round(th);
         }
       }
-      
+
       // Magnetic Heading
-      if (newRow.th !== null && variation !== null) {
-        let mh = newRow.th - variation;
+      if (newRow.th !== null && variation !== null && variation !== '') {
+        // Parse variation string (e.g., '+5', '-3', '0', '10')
+        let parsedVar = 0;
+        if (typeof variation === 'string') {
+          parsedVar = Number(variation.replace(/\s/g, ''));
+          if (isNaN(parsedVar)) parsedVar = 0;
+        } else if (typeof variation === 'number') {
+          parsedVar = variation;
+        }
+        // If positive or no sign, add to TH; if negative, subtract from TH
+        let mh = newRow.th;
+        if (parsedVar >= 0) {
+          mh = newRow.th + Math.abs(parsedVar); // Positive: add
+        } else {
+          mh = newRow.th - Math.abs(parsedVar); // Negative: subtract
+        }
         mh = (mh % 360 + 360) % 360; // Keep in 0-359 range
         newRow.mh = Math.round(mh);
       } else {
         newRow.mh = null;
       }
-      
-      // ETE
+
+      // ETE (store as minutes, but display as HH:MM)
       if (distance !== null && newRow.gs !== null && newRow.gs > 0) {
         const eteMinutes = (distance / newRow.gs) * 60;
         newRow.ete = Math.round(eteMinutes);
       } else {
         newRow.ete = null;
       }
-      
+
       // Fuel
       if (newRow.ete !== null && gph !== null) {
-        const fuelGallons = (newRow.ete / 60) * gph;
+        const fuelGallons = (Number(newRow.ete) / 60) * Number(gph);
         newRow.fuel = Number(fuelGallons.toFixed(1));
       } else {
         newRow.fuel = null;
@@ -151,4 +139,37 @@ export class NavlogComponent {
       return newRows;
     });
   }
+
+  // Helper to format ETE as HH:MM
+  formatEte(ete: number | null): string {
+    if (ete === null || isNaN(Number(ete))) return '';
+    const hours = Math.floor(Number(ete) / 60);
+    const minutes = Math.round(Number(ete) % 60);
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+  }
+}
+
+import { Component, ChangeDetectionStrategy, signal, computed } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+export interface NavlogEntry {
+  id: number;
+  waypoint: string;
+  vorIdent: string;
+  vorFreq: number | null;
+  course: number | null;
+  windDir: number | null;
+  windVel: number | null;
+  tas: number | null;
+  altitude: number | null;
+  tc: number | null;
+  wca: number | null;
+  th: number | null;
+  variation: string | null;
+  mh: number | null;
+  distance: number | null;
+  gs: number | null;
+  ete: number | null;
+  gph: number | null;
+  fuel: number | null;
 }

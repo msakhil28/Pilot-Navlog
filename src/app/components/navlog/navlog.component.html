@@ -39,11 +39,13 @@
             <td class="p-2 whitespace-nowrap"><input readonly type="number" [ngModel]="row.tc" name="tc-{{row.id}}" class="w-full min-w-[5rem] bg-transparent rounded-md p-2 text-[#e6edf3] focus:outline-none sm:text-sm"></td>
             <td class="p-2 whitespace-nowrap"><input readonly type="number" [ngModel]="row.wca" name="wca-{{row.id}}" class="w-full min-w-[5rem] bg-transparent rounded-md p-2 text-[#e6edf3] focus:outline-none sm:text-sm"></td>
             <td class="p-2 whitespace-nowrap"><input readonly type="number" [ngModel]="row.th" name="th-{{row.id}}" class="w-full min-w-[5rem] bg-transparent rounded-md p-2 text-[#e6edf3] focus:outline-none sm:text-sm"></td>
-            <td class="p-2 whitespace-nowrap"><input type="number" [(ngModel)]="row.variation" (ngModelChange)="calculateRow(row.id)" name="variation-{{row.id}}" class="w-full min-w-[5rem] bg-[#0d1117] border border-[#30363d] rounded-md p-2 text-[#e6edf3] focus:outline-none focus:ring-2 focus:ring-[#2f81f7] focus:border-[#2f81f7] sm:text-sm"></td>
+            <td class="p-2 whitespace-nowrap"><input type="text" [(ngModel)]="row.variation" (ngModelChange)="calculateRow(row.id)" name="variation-{{row.id}}" placeholder="10 (add) or -10 (subtract)" class="w-full min-w-[5rem] bg-[#0d1117] border border-[#30363d] rounded-md p-2 text-[#e6edf3] focus:outline-none focus:ring-2 focus:ring-[#2f81f7] focus:border-[#2f81f7] sm:text-sm"></td>
             <td class="p-2 whitespace-nowrap"><input readonly type="number" [ngModel]="row.mh" name="mh-{{row.id}}" class="w-full min-w-[5rem] bg-transparent rounded-md p-2 text-[#e6edf3] focus:outline-none sm:text-sm"></td>
             <td class="p-2 whitespace-nowrap"><input type="number" [(ngModel)]="row.distance" (ngModelChange)="calculateRow(row.id)" name="distance-{{row.id}}" class="w-full min-w-[5rem] bg-[#0d1117] border border-[#30363d] rounded-md p-2 text-[#e6edf3] focus:outline-none focus:ring-2 focus:ring-[#2f81f7] focus:border-[#2f81f7] sm:text-sm"></td>
             <td class="p-2 whitespace-nowrap"><input readonly type="number" [ngModel]="row.gs" name="gs-{{row.id}}" class="w-full min-w-[5rem] bg-transparent rounded-md p-2 text-[#e6edf3] focus:outline-none sm:text-sm"></td>
-            <td class="p-2 whitespace-nowrap"><input readonly type="number" [ngModel]="row.ete" name="ete-{{row.id}}" class="w-full min-w-[5rem] bg-transparent rounded-md p-2 text-[#e6edf3] focus:outline-none sm:text-sm"></td>
+            <td class="p-2 whitespace-nowrap">
+              <input readonly type="text" [value]="formatEte(row.ete)" name="ete-{{row.id}}" class="w-full min-w-[5rem] bg-transparent rounded-md p-2 text-[#e6edf3] focus:outline-none sm:text-sm">
+            </td>
             <td class="p-2 whitespace-nowrap"><input type="number" [(ngModel)]="row.gph" (ngModelChange)="calculateRow(row.id)" name="gph-{{row.id}}" class="w-full min-w-[5rem] bg-[#0d1117] border border-[#30363d] rounded-md p-2 text-[#e6edf3] focus:outline-none focus:ring-2 focus:ring-[#2f81f7] focus:border-[#2f81f7] sm:text-sm"></td>
             <td class="p-2 whitespace-nowrap"><input readonly type="number" [ngModel]="row.fuel" name="fuel-{{row.id}}" class="w-full min-w-[5rem] bg-transparent rounded-md p-2 text-[#e6edf3] focus:outline-none sm:text-sm"></td>
             <td class="p-2 text-center whitespace-nowrap">
@@ -60,7 +62,7 @@
           <td colspan="12"></td>
           <td class="px-3 py-3 text-sm font-semibold text-[#e6edf3]">{{ totalDistance() }}</td>
           <td></td>
-          <td class="px-3 py-3 text-sm font-semibold text-[#e6edf3]">{{ totalEte() }}</td>
+          <td class="px-3 py-3 text-sm font-semibold text-[#e6edf3]">{{ formatEte(totalEte()) }}</td>
           <td></td>
           <td class="px-3 py-3 text-sm font-semibold text-[#e6edf3]">{{ totalFuel().toFixed(1) }}</td>
           <td></td>
