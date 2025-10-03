@@ -1,0 +1,41 @@
+<div class="w-full aspect-video bg-slate-700/50 rounded-md overflow-hidden ring-1 ring-slate-600">
+  @if (viewBox()) {
+    <svg [attr.viewBox]="viewBox()" class="w-full h-full" preserveAspectRatio="xMidYMid meet">
+      <path 
+        [attr.d]="path()" 
+        stroke-dasharray="2" 
+        [attr.stroke-width]="strokeWidth()"
+        stroke="#67e8f9" 
+        fill="none" 
+        vector-effect="non-scaling-stroke"/>
+      
+      <!-- Departure Pin -->
+      <g [attr.transform]="'translate(' + depPoint().x + ',' + depPoint().y + ')'">
+        <circle cx="0" cy="0" [attr.r]="pinRadius()" fill="#f87171" vector-effect="non-scaling-stroke" />
+        <text 
+          [attr.x]="pinRadius() * 1.5" 
+          [attr.y]="pinRadius() * 0.5" 
+          [attr.font-size]="fontSize()" 
+          fill="#f87171" 
+          class="font-mono" 
+          style="paint-order: stroke; stroke: #1e293b; stroke-width: 0.5px; stroke-linecap: butt; stroke-linejoin: miter;">
+          {{ departure().identifier }}
+        </text>
+      </g>
+      
+      <!-- Destination Pin -->
+      <g [attr.transform]="'translate(' + destPoint().x + ',' + destPoint().y + ')'">
+        <circle cx="0" cy="0" [attr.r]="pinRadius()" fill="#34d399" vector-effect="non-scaling-stroke" />
+        <text 
+          [attr.x]="pinRadius() * 1.5" 
+          [attr.y]="pinRadius() * 0.5" 
+          [attr.font-size]="fontSize()" 
+          fill="#34d399" 
+          class="font-mono"
+          style="paint-order: stroke; stroke: #1e293b; stroke-width: 0.5px; stroke-linecap: butt; stroke-linejoin: miter;">
+          {{ destination().airport_identifier }}
+        </text>
+      </g>
+    </svg>
+  }
+</div>

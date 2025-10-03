@@ -1,0 +1,107 @@
+<div class="min-h-screen bg-slate-900 font-sans p-4 sm:p-6 lg:p-8">
+  <div class="max-w-7xl mx-auto">
+    
+    <header class="text-center mb-8">
+      <h1 class="text-4xl sm:text-5xl font-bold text-cyan-400 mb-2 tracking-tight">
+        Flight Discovery
+      </h1>
+      <p class="text-lg text-slate-400">
+        Find your next "$100 hamburger" or scenic flight destination.
+      </p>
+    </header>
+
+    <main>
+      <div class="bg-slate-800 rounded-lg shadow-2xl shadow-slate-950/50 p-8 mb-8 ring-1 ring-slate-700">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
+          <div>
+            <label for="airport-id" class="block text-sm font-medium text-slate-300 mb-2">Departure Airport</label>
+            <input 
+              id="airport-id" 
+              type="text"
+              placeholder="e.g. KPAO"
+              [value]="airportId()"
+              (input)="onAirportIdInput($event)"
+              class="w-full bg-slate-700 border-slate-600 rounded-md shadow-sm text-slate-200 placeholder-slate-500 focus:ring-cyan-500 focus:border-cyan-500 transition duration-150 ease-in-out" />
+          </div>
+          <div>
+            <label for="distance" class="block text-sm font-medium text-slate-300 mb-2">Max Distance (NM)</label>
+            <select 
+              id="distance"
+              [value]="distance()"
+              (change)="onDistanceChange($event)"
+              class="w-full bg-slate-700 border-slate-600 rounded-md shadow-sm text-slate-200 focus:ring-cyan-500 focus:border-cyan-500 transition duration-150 ease-in-out">
+              @for(d of distances; track d) {
+                <option [value]="d">{{ d }} nm</option>
+              }
+            </select>
+          </div>
+          <div>
+            <label for="place-type" class="block text-sm font-medium text-slate-300 mb-2">Place Type</label>
+            <select 
+              id="place-type"
+              [value]="placeType()"
+              (change)="onPlaceTypeChange($event)"
+              class="w-full bg-slate-700 border-slate-600 rounded-md shadow-sm text-slate-200 focus:ring-cyan-500 focus:border-cyan-500 transition duration-150 ease-in-out">
+              @for(t of placeTypes; track t) {
+                <option [value]="t">{{ t }}</option>
+              }
+            </select>
+          </div>
+          <div>
+            <button 
+              (click)="findPlaces()"
+              [disabled]="loading() || !airportId()"
+              class="w-full flex justify-center items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800 focus:ring-cyan-500 disabled:bg-slate-600 disabled:cursor-not-allowed transition duration-150 ease-in-out">
+              @if (loading()) {
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span>Searching...</span>
+              } @else {
+                <span>Find Places</span>
+              }
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-container">
+        @if (loading()) {
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            @for (_ of [1,2,3]; track $index) {
+              <app-skeleton-loader></app-skeleton-loader>
+            }
+          </div>
+        } @else if (error()) {
+          <div class="text-center p-8 bg-slate-800/50 rounded-lg">
+            <p class="text-red-400 font-semibold">{{ error() }}</p>
+          </div>
+        } @else if (initialState()) {
+          <div class="text-center p-8 bg-slate-800/50 rounded-lg">
+            <p class="text-slate-400">Enter an airport and distance to start your discovery.</p>
+          </div>
+        } @else if (places().length > 0) {
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            @for (place of places(); track place.name) {
+              <app-place-card [place]="place" (select)="onPlaceSelected($event)"></app-place-card>
+            }
+          </div>
+        } @else {
+          <div class="text-center p-8 bg-slate-800/50 rounded-lg">
+            <p class="text-slate-400">No interesting places found within the specified range. Try a larger distance!</p>
+          </div>
+        }
+      </div>
+    </main>
+
+    @if (selectedPlace()) {
+      <app-place-detail 
+        [place]="selectedPlace()!" 
+        [departureAirport]="departureAirport()"
+        (close)="onDetailClose()">
+      </app-place-detail>
+    }
+
+  </div>
+</div>

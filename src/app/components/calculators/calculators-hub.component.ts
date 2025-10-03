@@ -6,8 +6,9 @@ import { FuelPlannerComponent } from './fuel-planner/fuel-planner.component';
 import { TasCalculatorComponent } from './tas-calculator/tas-calculator.component';
 import { WindComponentCalculatorComponent } from './wind-component-calculator/wind-component-calculator.component';
 import { ConversionsCalculatorComponent } from './conversions-calculator/conversions-calculator.component';
+import { RunwayWindCalculatorComponent } from './runway-wind-calculator/runway-wind-calculator.component';
 
-type CalculatorId = 'pa-da' | 'tsd' | 'fuel' | 'tas' | 'wind' | 'conversions';
+type CalculatorId = 'pa-da' | 'tsd' | 'fuel' | 'tas' | 'wind' | 'conversions' | 'runway-wind';
 
 interface Calculator {
   id: CalculatorId;
@@ -24,7 +25,8 @@ interface Calculator {
         FuelPlannerComponent,
         TasCalculatorComponent,
         WindComponentCalculatorComponent,
-        ConversionsCalculatorComponent
+        ConversionsCalculatorComponent,
+        RunwayWindCalculatorComponent
     ]
 })
 export class CalculatorsHubComponent {
@@ -35,6 +37,8 @@ export class CalculatorsHubComponent {
     { id: 'tas', name: 'True Airspeed (TAS)' },
     { id: 'wind', name: 'Wind Component' },
     { id: 'conversions', name: 'Conversions' },
+    { id: 'runway-wind', name: 'Runway Wind Visualizer' },
+
   ];
   
   activeCalculator = signal<CalculatorId>('pa-da');
