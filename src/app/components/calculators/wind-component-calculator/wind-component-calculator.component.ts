@@ -1,11 +1,12 @@
 import { Component, ChangeDetectionStrategy, signal, computed } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
-    selector: 'app-wind-component-calculator',
-    imports: [FormsModule],
-    templateUrl: './wind-component-calculator.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-wind-component-calculator',
+  imports: [FormsModule, DecimalPipe],
+  templateUrl: './wind-component-calculator.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WindComponentCalculatorComponent {
   course = signal(270);
@@ -13,8 +14,7 @@ export class WindComponentCalculatorComponent {
   windSpeed = signal(15);
 
   windAngle = computed(() => {
-    const angle = this.windDirection() - this.course();
-    return angle;
+    return this.windDirection() - this.course();
   });
 
   private windAngleRadians = computed(() => {
@@ -22,12 +22,10 @@ export class WindComponentCalculatorComponent {
   });
 
   headwind = computed(() => {
-    // Cosine gives the component parallel to the course. Positive is headwind.
     return this.windSpeed() * Math.cos(this.windAngleRadians());
   });
 
   private rawCrosswind = computed(() => {
-    // Sine gives the component perpendicular to the course.
     return this.windSpeed() * Math.sin(this.windAngleRadians());
   });
 
@@ -37,7 +35,11 @@ export class WindComponentCalculatorComponent {
 
   crosswindDirection = computed(() => {
     const cw = this.rawCrosswind();
-    if (Math.abs(cw) < 0.1) return 'No Crosswind';
-    return cw > 0 ? 'From Right' : 'From Left';
+    if (Math.abs(cw) < 0.1) return 'Direct';
+    return cw > 0 ? 'Right' : 'Left';
   });
+
+  // Visual Rotations
+  runwayRotation = computed(() => `rotate(${this.course()}deg)`);
+  windRotation = computed(() => `rotate(${this.windDirection()}deg)`);
 }

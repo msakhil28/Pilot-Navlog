@@ -1,11 +1,12 @@
 import { Component, ChangeDetectionStrategy, signal, computed } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
-    selector: 'app-tas-calculator',
-    imports: [FormsModule],
-    templateUrl: './tas-calculator.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-tas-calculator',
+  imports: [FormsModule, DecimalPipe],
+  templateUrl: './tas-calculator.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TasCalculatorComponent {
   ias = signal(120);
@@ -16,7 +17,7 @@ export class TasCalculatorComponent {
     const ias = this.ias();
     const pa = this.pressureAltitude();
     const oat = this.oatCelsius();
-    
+
     // Standard atmosphere temperature in Kelvin at sea level
     const T0 = 288.15; // 15°C
     // Standard pressure at sea level in hPa
@@ -30,11 +31,11 @@ export class TasCalculatorComponent {
 
     const paMeters = pa * 0.3048;
     const T = (oat + 273.15); // OAT in Kelvin
-    
+
     // Density at altitude (rho)
     const P = P0 * Math.pow(1 - (L * paMeters) / T0, (g * 0.0289644) / (R * L));
     const rho = P / (R * (oat + 273.15));
-    
+
     // Density at sea level (rho0)
     const rho0 = P0 / (R * T0);
 

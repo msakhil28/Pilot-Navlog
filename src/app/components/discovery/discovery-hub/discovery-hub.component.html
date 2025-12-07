@@ -1,106 +1,154 @@
-<div class="min-h-screen bg-slate-900 font-sans p-4 sm:p-6 lg:p-8">
+<div class="font-sans">
   <div class="max-w-7xl mx-auto">
-    
-    <header class="text-center mb-8">
-      <h1 class="text-4xl sm:text-5xl font-bold text-cyan-400 mb-2 tracking-tight">
-        Flight Discovery
-      </h1>
-      <p class="text-lg text-slate-400">
+
+    <header class="text-center mb-12">
+      <h2 class="text-3xl font-light text-white mb-2 tracking-wide uppercase">
+        Flight <span class="text-flight-blue font-bold">Discovery</span>
+      </h2>
+      <p class="text-sky-muted font-light">
         Find your next "$100 hamburger" or scenic flight destination.
       </p>
     </header>
 
-    <main>
-      <div class="bg-slate-800 rounded-lg shadow-2xl shadow-slate-950/50 p-8 mb-8 ring-1 ring-slate-700">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
-          <div>
-            <label for="airport-id" class="block text-sm font-medium text-slate-300 mb-2">Departure Airport</label>
-            <input 
-              id="airport-id" 
-              type="text"
-              placeholder="e.g. KPAO"
-              [value]="airportId()"
-              (input)="onAirportIdInput($event)"
-              class="w-full bg-slate-700 border-slate-600 rounded-md shadow-sm text-slate-200 placeholder-slate-500 focus:ring-cyan-500 focus:border-cyan-500 transition duration-150 ease-in-out" />
-          </div>
-          <div>
-            <label for="distance" class="block text-sm font-medium text-slate-300 mb-2">Max Distance (NM)</label>
-            <select 
-              id="distance"
-              [value]="distance()"
-              (change)="onDistanceChange($event)"
-              class="w-full bg-slate-700 border-slate-600 rounded-md shadow-sm text-slate-200 focus:ring-cyan-500 focus:border-cyan-500 transition duration-150 ease-in-out">
-              @for(d of distances; track d) {
-                <option [value]="d">{{ d }} nm</option>
-              }
-            </select>
-          </div>
-          <div>
-            <label for="place-type" class="block text-sm font-medium text-slate-300 mb-2">Place Type</label>
-            <select 
-              id="place-type"
-              [value]="placeType()"
-              (change)="onPlaceTypeChange($event)"
-              class="w-full bg-slate-700 border-slate-600 rounded-md shadow-sm text-slate-200 focus:ring-cyan-500 focus:border-cyan-500 transition duration-150 ease-in-out">
-              @for(t of placeTypes; track t) {
-                <option [value]="t">{{ t }}</option>
-              }
-            </select>
-          </div>
-          <div>
-            <button 
-              (click)="findPlaces()"
-              [disabled]="loading() || !airportId()"
-              class="w-full flex justify-center items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800 focus:ring-cyan-500 disabled:bg-slate-600 disabled:cursor-not-allowed transition duration-150 ease-in-out">
-              @if (loading()) {
-                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+    <div class="mb-12">
+      <!-- Search Control Panel -->
+      <div class="bg-sky-dark/40 backdrop-blur-md rounded-2xl shadow-xl border border-white/5 p-6 sm:p-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-end">
+
+          <!-- Airport Input -->
+          <div class="group">
+            <label for="airport-id"
+              class="block text-xs font-semibold text-sky-muted uppercase tracking-wider mb-2 group-focus-within:text-flight-blue transition-colors">Departure</label>
+            <div class="relative">
+              <input id="airport-id" type="text" placeholder="ICAO" [value]="airportId()"
+                (input)="onAirportIdInput($event)"
+                class="w-full bg-sky-light/50 border border-sky-muted/20 rounded-xl px-4 py-3 text-white placeholder-sky-muted/50 focus:ring-2 focus:ring-flight-blue focus:border-transparent transition-all duration-300 outline-none font-mono uppercase" />
+              <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-sky-muted/30">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                 </svg>
-                <span>Searching...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Distance Slider/Input (Simulated as Select for now) -->
+          <div class="group">
+            <label for="distance"
+              class="block text-xs font-semibold text-sky-muted uppercase tracking-wider mb-2 group-focus-within:text-flight-blue transition-colors">Range</label>
+            <div class="relative">
+              <select id="distance" [value]="distance()" (change)="onDistanceChange($event)"
+                class="w-full bg-sky-light/50 border border-sky-muted/20 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-flight-blue focus:border-transparent transition-all duration-300 outline-none appearance-none cursor-pointer">
+                @for(d of distances; track d) {
+                <option [value]="d" class="bg-sky-dark text-white">{{ d }} NM</option>
+                }
+              </select>
+              <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-sky-muted/50">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-4 h-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Type Selector -->
+          <div class="group">
+            <label for="place-type"
+              class="block text-xs font-semibold text-sky-muted uppercase tracking-wider mb-2 group-focus-within:text-flight-blue transition-colors">Mission</label>
+            <div class="relative">
+              <select id="place-type" [value]="placeType()" (change)="onPlaceTypeChange($event)"
+                class="w-full bg-sky-light/50 border border-sky-muted/20 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-flight-blue focus:border-transparent transition-all duration-300 outline-none appearance-none cursor-pointer">
+                @for(t of placeTypes; track t) {
+                <option [value]="t" class="bg-sky-dark text-white">{{ t }}</option>
+                }
+              </select>
+              <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-sky-muted/50">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-4 h-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Button -->
+          <div>
+            <button (click)="findPlaces()" [disabled]="loading() || !airportId()"
+              class="w-full group relative flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-flight-blue hover:bg-flight-focus focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-sky-dark focus:ring-flight-blue disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 ease-out shadow-lg shadow-flight-blue/20 hover:shadow-flight-blue/40 overflow-hidden">
+              <div
+                class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out">
+              </div>
+              @if (loading()) {
+              <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                </path>
+              </svg>
+              <span>Scanning...</span>
               } @else {
-                <span>Find Places</span>
+              <span class="relative z-10 flex items-center gap-2">
+                Find Destinations
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-5 h-5 group-hover:translate-x-1 transition-transform">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                </svg>
+              </span>
               }
             </button>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="results-container">
-        @if (loading()) {
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            @for (_ of [1,2,3]; track $index) {
-              <app-skeleton-loader></app-skeleton-loader>
-            }
-          </div>
-        } @else if (error()) {
-          <div class="text-center p-8 bg-slate-800/50 rounded-lg">
-            <p class="text-red-400 font-semibold">{{ error() }}</p>
-          </div>
-        } @else if (initialState()) {
-          <div class="text-center p-8 bg-slate-800/50 rounded-lg">
-            <p class="text-slate-400">Enter an airport and distance to start your discovery.</p>
-          </div>
-        } @else if (places().length > 0) {
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            @for (place of places(); track place.name) {
-              <app-place-card [place]="place" (select)="onPlaceSelected($event)"></app-place-card>
-            }
-          </div>
-        } @else {
-          <div class="text-center p-8 bg-slate-800/50 rounded-lg">
-            <p class="text-slate-400">No interesting places found within the specified range. Try a larger distance!</p>
-          </div>
+    <!-- Results Area -->
+    <div class="min-h-[300px]">
+      @if (loading()) {
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        @for (_ of [1,2,3]; track $index) {
+        <app-skeleton-loader></app-skeleton-loader>
         }
       </div>
-    </main>
+      } @else if (error()) {
+      <div
+        class="text-center p-12 bg-avionics-red/10 border border-avionics-red/20 rounded-2xl animate-in fade-in duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="w-12 h-12 text-avionics-red mx-auto mb-4">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+        </svg>
+        <p class="text-avionics-red font-medium text-lg">{{ error() }}</p>
+      </div>
+      } @else if (initialState()) {
+      <div class="flex flex-col items-center justify-center p-12 text-center opacity-60">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"
+          class="w-24 h-24 mb-4 text-sky-muted">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+        </svg>
+        <p class="text-sky-muted text-lg">Enter flight parameters above to begin.</p>
+      </div>
+      } @else if (places().length > 0) {
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        @for (place of places(); track place.name) {
+        <app-place-card [place]="place" (select)="onPlaceSelected($event)"></app-place-card>
+        }
+      </div>
+      } @else {
+      <div class="text-center p-12 bg-sky-dark/30 rounded-2xl border border-dashed border-sky-muted/20">
+        <p class="text-sky-muted">No destinations found in this sector. Try extending your range.</p>
+      </div>
+      }
+    </div>
 
     @if (selectedPlace()) {
-      <app-place-detail 
-        [place]="selectedPlace()!" 
-        [departureAirport]="departureAirport()"
-        (close)="onDetailClose()">
-      </app-place-detail>
+    <app-place-detail [place]="selectedPlace()!" [departureAirport]="departureAirport()" (close)="onDetailClose()">
+    </app-place-detail>
     }
 
   </div>

@@ -3,13 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Place, DepartureAirport } from '../models/place.model';
 import { AirportDetails } from '../models/airport-details.model';
 import { GeminiService } from '../services/gemini.service';
-import { MapComponent } from '../map/map.component';
 
 @Component({
   selector: 'app-place-detail',
   templateUrl: './place-detail.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, MapComponent],
+  imports: [CommonModule],
 })
 export class PlaceDetailComponent implements OnInit {
   place = input.required<Place>();
@@ -36,17 +35,17 @@ export class PlaceDetailComponent implements OnInit {
       };
     });
   }
-  
+
   ngOnInit(): void {
     this.loadData();
   }
-  
+
   async loadData(): Promise<void> {
     this.imageLoading.set(true);
     this.imageError.set(null);
     this.detailsLoading.set(true);
     this.detailsError.set(null);
-    
+
     const place = this.place();
 
     const [imageResult, detailsResult] = await Promise.allSettled([

@@ -1,28 +1,73 @@
-<div class="flex flex-col gap-8 md:flex-row">
+<div class="flex flex-col md:flex-row gap-8 items-stretch">
   <!-- Input Form -->
   <div class="w-full md:w-1/2">
-    <h2 class="text-2xl font-semibold mb-4 text-[#e6edf3]">True Airspeed (TAS) Calculator</h2>
-    <form class="space-y-6">
-      <div>
-        <label for="ias" class="block text-sm font-medium text-[#7d8590]">Indicated Airspeed (IAS) (kts)</label>
-        <input type="number" [(ngModel)]="ias" name="ias" class="mt-1 w-full bg-[#0d1117] border border-[#30363d] rounded-md py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7]">
-      </div>
-      <div>
-        <label for="pa" class="block text-sm font-medium text-[#7d8590]">Pressure Altitude (ft)</label>
-        <input type="number" [(ngModel)]="pressureAltitude" name="pa" class="mt-1 w-full bg-[#0d1117] border border-[#30363d] rounded-md py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7]">
-      </div>
-      <div>
-        <label for="oat" class="block text-sm font-medium text-[#7d8590]">Outside Air Temp (°C)</label>
-        <input type="number" [(ngModel)]="oatCelsius" name="oat" class="mt-1 w-full bg-[#0d1117] border border-[#30363d] rounded-md py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7]">
-      </div>
-    </form>
+    <div class="bg-sky-card/50 backdrop-blur border border-white/5 rounded-2xl p-6 sm:p-8 h-full">
+      <h3 class="text-xs font-bold text-sky-muted uppercase tracking-widest mb-6 border-b border-white/5 pb-2">Air Data
+        Inputs</h3>
+      <form class="space-y-6">
+        <div class="group">
+          <label for="ias"
+            class="block text-[10px] font-bold text-sky-muted uppercase tracking-wider mb-2 group-focus-within:text-flight-blue transition-colors">Indicated
+            Airspeed (IAS)</label>
+          <div class="relative">
+            <input type="number" [(ngModel)]="ias" name="ias"
+              class="w-full bg-sky-dark border border-white/10 rounded-xl py-3 px-4 text-white font-mono text-lg focus:ring-2 focus:ring-flight-blue focus:border-transparent transition-all placeholder-white/20">
+            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-sky-muted text-xs font-mono">KTS</span>
+          </div>
+        </div>
+        <div class="group">
+          <label for="pa"
+            class="block text-[10px] font-bold text-sky-muted uppercase tracking-wider mb-2 group-focus-within:text-flight-blue transition-colors">Pressure
+            Altitude</label>
+          <div class="relative">
+            <input type="number" [(ngModel)]="pressureAltitude" name="pa"
+              class="w-full bg-sky-dark border border-white/10 rounded-xl py-3 px-4 text-white font-mono text-lg focus:ring-2 focus:ring-flight-blue focus:border-transparent transition-all placeholder-white/20">
+            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-sky-muted text-xs font-mono">FT</span>
+          </div>
+        </div>
+        <div class="group">
+          <label for="oat"
+            class="block text-[10px] font-bold text-sky-muted uppercase tracking-wider mb-2 group-focus-within:text-flight-blue transition-colors">Outside
+            Air Temp</label>
+          <div class="relative">
+            <input type="number" [(ngModel)]="oatCelsius" name="oat"
+              class="w-full bg-sky-dark border border-white/10 rounded-xl py-3 px-4 text-white font-mono text-lg focus:ring-2 focus:ring-flight-blue focus:border-transparent transition-all placeholder-white/20">
+            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-sky-muted text-xs font-mono">°C</span>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 
   <!-- Results Display -->
-  <div class="w-full md:w-1/2 flex items-center justify-center">
-    <div class="bg-[#0d1117] border border-[#30363d] p-6 rounded-lg text-center w-full">
-      <h3 class="text-lg font-medium text-[#7d8590]">True Airspeed</h3>
-      <p class="text-5xl font-bold text-teal-400 mt-2">{{ tas().toFixed(0) }} kts</p>
+  <div class="w-full md:w-1/2">
+    <div
+      class="h-full bg-sky-dark/80 backdrop-blur rounded-2xl border border-white/5 p-6 sm:p-8 flex flex-col justify-center items-center relative overflow-hidden">
+      <!-- Ambient Glow -->
+      <div class="absolute inset-0 bg-flight-blue/5 animate-pulse-slow"></div>
+
+      <div class="relative z-10 text-center">
+        <h3 class="text-sm font-bold text-sky-muted uppercase tracking-widest mb-2">True Airspeed</h3>
+        <div
+          class="text-[8rem] leading-none font-mono font-bold text-white tracking-tighter drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+          {{ tas() | number:'1.0-0' }}
+        </div>
+        <p class="text-xl text-sky-muted font-light mt-2 tracking-widest">KNOTS</p>
+      </div>
+
+      <!-- Scale/Ticks (Decorative) -->
+      <div
+        class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/20 to-transparent flex justify-between items-end px-8 pb-4 opacity-50">
+        <div class="w-px h-4 bg-white/20"></div>
+        <div class="w-px h-8 bg-white/40"></div>
+        <div class="w-px h-4 bg-white/20"></div>
+        <div class="w-px h-8 bg-white/40"></div>
+        <div class="w-px h-4 bg-white/20"></div>
+        <div class="w-px h-8 bg-white/40"></div>
+        <div class="w-px h-4 bg-white/20"></div>
+        <div class="w-px h-8 bg-white/40"></div>
+        <div class="w-px h-4 bg-white/20"></div>
+      </div>
     </div>
   </div>
 </div>

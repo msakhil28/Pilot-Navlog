@@ -1,49 +1,226 @@
-<div class="min-h-screen bg-[#0d1117] text-[#e6edf3] flex flex-col items-center p-4 sm:p-6 lg:p-8">
-  <div class="w-full max-w-7xl">
-    <header class="text-center mb-8">
-      <h1 class="text-4xl font-bold text-[#e6edf3] tracking-tight">Pilot's Dashboard</h1>
-      <p class="text-[#7d8590] mt-2">Your essential tools for flight planning.</p>
-    </header>
+<div
+  class="flex h-screen w-full bg-[#0f172a] text-white overflow-hidden selection:bg-flight-blue selection:text-white font-sans">
 
-    <div class="mb-6">
-      <div class="flex flex-wrap border-b border-[#30363d]">
-         <button
-          (click)="setView('calculator')"
-          [class]="activeView() === 'calculator' ? 'border-[#2f81f7] text-[#e6edf3]' : 'border-transparent text-[#7d8590] hover:text-[#e6edf3] hover:border-[#7d8590]'"
-          class="py-4 px-6 font-medium border-b-2 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#2f81f7] rounded-t-md">
-          Calculators
-        </button>
-        <button
-          (click)="setView('navlog')"
-          [class]="activeView() === 'navlog' ? 'border-[#2f81f7] text-[#e6edf3]' : 'border-transparent text-[#7d8590] hover:text-[#e6edf3] hover:border-[#7d8590]'"
-          class="py-4 px-6 font-medium border-b-2 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#2f81f7] rounded-t-md">
-          Navlog
-        </button>
-        <button
-          (click)="setView('discovery')"
-          [class]="activeView() === 'discovery' ? 'border-[#2f81f7] text-[#e6edf3]' : 'border-transparent text-[#7d8590] hover:text-[#e6edf3] hover:border-[#7d8590]'"
-          class="py-4 px-6 font-medium border-b-2 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#2f81f7] rounded-t-md">
-          Discovery
-        </button>
-       
+  <!-- Sidebar Navigation -->
+  <aside [class]="sidebarOpen() ? 'flex' : 'hidden'"
+    class="w-72 bg-[#1e293b]/50 backdrop-blur-xl border-r border-white/5 flex-col z-10 shadow-2xl transition-all duration-300 ease-in-out fixed lg:relative inset-y-0 left-0 lg:z-10 z-50">
+
+    <!-- Logo / Brand -->
+    <div class="p-8 pb-4">
+      <div class="flex items-center gap-3 mb-1">
+        <div class="bg-gradient-to-br from-flight-blue to-blue-600 p-2.5 rounded-xl shadow-lg shadow-blue-500/20">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-xl font-bold tracking-tight text-white leading-none">Pilot<span
+              class="text-flight-blue">Resources</span></h1>
+          <span class="text-[10px] uppercase tracking-[0.2em] text-sky-muted font-medium">Flight Assistant</span>
+        </div>
       </div>
     </div>
 
-    <main class="bg-[#161b22] border border-[#30363d] rounded-lg shadow-2xl p-4 sm:p-6">
-      @switch (activeView()) {
+    <!-- Navigation Links -->
+    <nav class="flex-1 px-4 space-y-2 mt-8">
+
+      <!-- Discovery Section -->
+      <div class="mb-6">
+        <p class="px-4 text-[10px] font-bold text-sky-muted/50 uppercase tracking-widest mb-2 font-mono">Mission
+          Planning</p>
+        <button (click)="setView('discovery')" [class.bg-flight-blue]="activeView() === 'discovery'"
+          [class.shadow-lg]="activeView() === 'discovery'" [class.shadow-flight-blue/25]="activeView() === 'discovery'"
+          [class.text-white]="activeView() === 'discovery'" [class.text-sky-muted]="activeView() !== 'discovery'"
+          class="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl transition-all duration-200 hover:bg-white/5 group border border-transparent"
+          [class.border-white-10]="activeView() !== 'discovery' && 'hover:border-white/10'">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-colors"
+            [class.text-white]="activeView() === 'discovery'" [class.text-sky-muted]="activeView() !== 'discovery'"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <span class="font-medium text-sm">Discovery</span>
+          @if (activeView() === 'discovery') {
+          <div class="ml-auto w-1.5 h-1.5 rounded-full bg-white animate-pulse"></div>
+          }
+        </button>
+      </div>
+
+      <!-- Tools Section -->
+      <div class="mb-6">
+        <p class="px-4 text-[10px] font-bold text-sky-muted/50 uppercase tracking-widest mb-2 font-mono">Enroute Tools
+        </p>
+
+        <button (click)="setView('navlog')" [class.bg-flight-blue]="activeView() === 'navlog'"
+          [class.shadow-lg]="activeView() === 'navlog'" [class.shadow-flight-blue/25]="activeView() === 'navlog'"
+          [class.text-white]="activeView() === 'navlog'" [class.text-sky-muted]="activeView() !== 'navlog'"
+          class="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl transition-all duration-200 hover:bg-white/5 mb-2 border border-transparent">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-colors"
+            [class.text-white]="activeView() === 'navlog'" [class.text-sky-muted]="activeView() !== 'navlog'"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+          </svg>
+          <span class="font-medium text-sm">Flight Log</span>
+          @if (activeView() === 'navlog') {
+          <div class="ml-auto w-1.5 h-1.5 rounded-full bg-white animate-pulse"></div>
+          }
+        </button>
+
+        <button (click)="setView('calculator')" [class.bg-flight-blue]="activeView() === 'calculator'"
+          [class.shadow-lg]="activeView() === 'calculator'"
+          [class.shadow-flight-blue/25]="activeView() === 'calculator'"
+          [class.text-white]="activeView() === 'calculator'" [class.text-sky-muted]="activeView() !== 'calculator'"
+          class="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl transition-all duration-200 hover:bg-white/5 border border-transparent">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-colors"
+            [class.text-white]="activeView() === 'calculator'" [class.text-sky-muted]="activeView() !== 'calculator'"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          </svg>
+          <span class="font-medium text-sm">Calculators</span>
+          @if (activeView() === 'calculator') {
+          <div class="ml-auto w-1.5 h-1.5 rounded-full bg-white animate-pulse"></div>
+          }
+        </button>
+      </div>
+    </nav>
+
+    <!-- Footer / Status -->
+    <div class="p-6 border-t border-white/5 bg-black/20">
+      <div class="flex items-center gap-3">
+        <div
+          class="w-8 h-8 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-500 flex items-center justify-center text-[10px] font-bold shadow-lg shadow-emerald-500/20">
+
+        </div>
+        <div class="flex-1">
+          <p class="text-sm font-medium text-white">Pilot In Command</p>
+          <p class="text-[10px] text-emerald-400 font-mono tracking-wider flex items-center gap-1">
+            <span class="block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            ONLINE
+          </p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Mobile Sidebar Backdrop -->
+  @if (sidebarOpen()) {
+  <div class="lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40" (click)="toggleSidebar()"></div>
+  }
+
+  <!-- Main Content Area -->
+  <main
+    class="flex-1 overflow-y-auto relative custom-scrollbar bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-slate-800/50 via-[#0f172a] to-[#0f172a]">
+
+    <!-- Mobile Header (visible only on mobile) -->
+    <div
+      class="lg:hidden sticky top-0 z-20 bg-[#1e293b]/95 backdrop-blur-xl border-b border-white/5 px-4 py-3 flex items-center justify-between shadow-lg">
+      <button (click)="toggleSidebar()" class="p-2 rounded-lg hover:bg-white/10 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <div class="flex items-center gap-2">
+        <div class="bg-gradient-to-br from-flight-blue to-blue-600 p-2 rounded-lg shadow-lg shadow-blue-500/20">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+          </svg>
+        </div>
+        <h1 class="text-lg font-bold text-white">Pilot<span class="text-flight-blue">Resources</span></h1>
+      </div>
+      <div class="text-xs text-sky-muted font-mono">{{ activeView() | titlecase }}</div>
+    </div>
+
+    <!-- Ambient Background Effects -->
+    <div class="fixed top-0 right-0 w-[500px] h-[500px] bg-flight-blue/5 rounded-full blur-[100px] pointer-events-none">
+    </div>
+    <div
+      class="fixed bottom-0 left-0 w-[500px] h-[500px] bg-avionics-green/5 rounded-full blur-[100px] pointer-events-none">
+    </div>
+
+    <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-12 relative z-10 min-h-full flex flex-col pb-24 lg:pb-8">
+      <!-- Dynamic Header -->
+      <header class="mb-8 flex items-end justify-between">
+        <div class="flex items-end gap-4">
+          <button (click)="toggleSidebar()"
+            class="hidden lg:flex p-2 rounded-lg hover:bg-white/10 transition-colors self-start">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-sky-muted hover:text-white transition-colors"
+              fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <div>
+            <h2 class="text-sky-muted font-mono text-xs uppercase tracking-[0.2em] mb-1">Current View</h2>
+            <h1 class="text-3xl font-light text-white">{{ activeView() | titlecase }}</h1>
+          </div>
+        </div>
+        <div
+          class="hidden sm:flex items-center gap-4 text-xs font-mono text-sky-muted bg-white/5 px-4 py-2 rounded-full border border-white/5 backdrop-blur-sm">
+          <span>UTC: {{ currentUtcTime() }}</span>
+          <span class="text-white/20">|</span>
+          <span>{{ activeView() | titlecase }}</span>
+        </div>
+      </header>
+
+      <!-- View Container -->
+      <div class="flex-1 animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out">
+        @switch (activeView()) {
         @case ('navlog') {
-          <app-navlog></app-navlog>
+        <app-navlog></app-navlog>
         }
         @case ('calculator') {
-          <app-calculators-hub></app-calculators-hub>
+        <app-calculators-hub></app-calculators-hub>
         }
         @case ('discovery') {
-          <app-discovery-hub></app-discovery-hub>
+        <app-discovery-hub></app-discovery-hub>
         }
-      }
-    </main>
-     <footer class="text-center mt-8 text-[#7d8590] text-sm">
-      <p>Fly Safe. This tool is for educational purposes only.</p>
-    </footer>
-  </div>
+        }
+      </div>
+    </div>
+
+    <!-- Mobile Bottom Navigation (visible only on mobile) -->
+    <div
+      class="lg:hidden fixed bottom-0 left-0 right-0 z-30 bg-[#1e293b]/95 backdrop-blur-xl border-t border-white/5 shadow-2xl">
+      <nav class="flex justify-around items-center py-3 px-2">
+        <button (click)="setView('discovery')" [class.text-flight-blue]="activeView() === 'discovery'"
+          [class.text-sky-muted]="activeView() !== 'discovery'"
+          class="flex flex-col items-center gap-1 px-4 py-2 rounded-xl transition-all duration-200"
+          [class.bg-flight-blue/10]="activeView() === 'discovery'">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <span class="text-[10px] font-medium">Discovery</span>
+        </button>
+
+        <button (click)="setView('navlog')" [class.text-flight-blue]="activeView() === 'navlog'"
+          [class.text-sky-muted]="activeView() !== 'navlog'"
+          class="flex flex-col items-center gap-1 px-4 py-2 rounded-xl transition-all duration-200"
+          [class.bg-flight-blue/10]="activeView() === 'navlog'">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+          </svg>
+          <span class="text-[10px] font-medium">Navlog</span>
+        </button>
+
+        <button (click)="setView('calculator')" [class.text-flight-blue]="activeView() === 'calculator'"
+          [class.text-sky-muted]="activeView() !== 'calculator'"
+          class="flex flex-col items-center gap-1 px-4 py-2 rounded-xl transition-all duration-200"
+          [class.bg-flight-blue/10]="activeView() === 'calculator'">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          </svg>
+          <span class="text-[10px] font-medium">Calculators</span>
+        </button>
+      </nav>
+    </div>
+  </main>
 </div>

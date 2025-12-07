@@ -1,37 +1,38 @@
 <div class="flex flex-col gap-8 md:flex-row">
   <!-- Input Form -->
   <div class="w-full md:w-1/2">
-    <h2 class="text-2xl font-semibold mb-4 text-[#e6edf3]">Conditions</h2>
+    <h3 class="text-xl font-light text-white mb-6 flex items-center gap-2">
+      <span class="bg-flight-blue/10 text-flight-blue p-1.5 rounded-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+      </span>
+      Current Conditions
+    </h3>
     <form class="space-y-6">
-      <div>
-        <label for="elevation" class="block text-sm font-medium text-[#7d8590]">Field Elevation (ft)</label>
-        <input 
-          type="number" 
-          id="elevation"
-          [(ngModel)]="fieldElevation"
-          name="elevation"
-          class="mt-1 block w-full bg-[#0d1117] border border-[#30363d] rounded-md shadow-sm py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7] sm:text-sm"
+      <div class="group">
+        <label for="elevation"
+          class="block text-xs font-bold text-sky-muted uppercase tracking-wider mb-2 group-focus-within:text-flight-blue transition-colors">Field
+          Elevation (ft)</label>
+        <input type="number" id="elevation" [(ngModel)]="fieldElevation" name="elevation"
+          class="block w-full bg-sky-dark/50 border border-white/10 rounded-xl py-3 px-4 text-white placeholder-sky-muted/30 focus:outline-none focus:ring-2 focus:ring-flight-blue focus:border-transparent transition-all"
           placeholder="e.g., 5280">
       </div>
-      <div>
-        <label for="altimeter" class="block text-sm font-medium text-[#7d8590]">Altimeter Setting (inHg)</label>
-        <input 
-          type="number"
-          id="altimeter"
-          step="0.01"
-          [(ngModel)]="altimeterSetting"
-          name="altimeter"
-          class="mt-1 block w-full bg-[#0d1117] border border-[#30363d] rounded-md shadow-sm py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7] sm:text-sm"
+      <div class="group">
+        <label for="altimeter"
+          class="block text-xs font-bold text-sky-muted uppercase tracking-wider mb-2 group-focus-within:text-flight-blue transition-colors">Altimeter
+          Setting (inHg)</label>
+        <input type="number" id="altimeter" step="0.01" [(ngModel)]="altimeterSetting" name="altimeter"
+          class="block w-full bg-sky-dark/50 border border-white/10 rounded-xl py-3 px-4 text-white placeholder-sky-muted/30 focus:outline-none focus:ring-2 focus:ring-flight-blue focus:border-transparent transition-all"
           placeholder="e.g., 29.92">
       </div>
-      <div>
-        <label for="oat" class="block text-sm font-medium text-[#7d8590]">Outside Air Temp (°C)</label>
-        <input 
-          type="number"
-          id="oat"
-          [(ngModel)]="oatCelsius"
-          name="oat"
-          class="mt-1 block w-full bg-[#0d1117] border border-[#30363d] rounded-md shadow-sm py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7] sm:text-sm"
+      <div class="group">
+        <label for="oat"
+          class="block text-xs font-bold text-sky-muted uppercase tracking-wider mb-2 group-focus-within:text-flight-blue transition-colors">Outside
+          Air Temp (°C)</label>
+        <input type="number" id="oat" [(ngModel)]="oatCelsius" name="oat"
+          class="block w-full bg-sky-dark/50 border border-white/10 rounded-xl py-3 px-4 text-white placeholder-sky-muted/30 focus:outline-none focus:ring-2 focus:ring-flight-blue focus:border-transparent transition-all"
           placeholder="e.g., 15">
       </div>
     </form>
@@ -39,15 +40,44 @@
 
   <!-- Results Display -->
   <div class="w-full md:w-1/2 flex flex-col gap-6">
-    <div class="bg-[#0d1117] border border-[#30363d] p-6 rounded-lg text-center">
-      <h3 class="text-lg font-medium text-[#7d8590]">Pressure Altitude</h3>
-      <p class="text-5xl font-bold text-blue-400 mt-2">{{ pressureAltitude() }} ft</p>
+    <div
+      class="bg-sky-dark/30 border border-white/5 p-8 rounded-2xl text-center relative overflow-hidden group hover:bg-sky-dark/40 transition-colors">
+      <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-flight-blue" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
+      <h3 class="text-sm font-bold text-sky-muted uppercase tracking-widest mb-1">Pressure Altitude</h3>
+      <p class="text-6xl font-thin text-flight-blue mt-2 font-mono flex items-baseline justify-center gap-2">
+        {{ pressureAltitude() | number:'1.0-0' }}
+        <span class="text-lg text-sky-muted font-normal">ft</span>
+      </p>
     </div>
-    <div class="bg-[#0d1117] border border-[#30363d] p-6 rounded-lg text-center">
-      <h3 class="text-lg font-medium text-[#7d8590]">Density Altitude</h3>
-      <p class="text-5xl font-bold text-amber-400 mt-2">{{ densityAltitude() }} ft</p>
+
+    <div
+      class="bg-sky-dark/30 border border-white/5 p-8 rounded-2xl text-center relative overflow-hidden group hover:bg-sky-dark/40 transition-colors">
+      <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-avionics-amber" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      </div>
+      <h3 class="text-sm font-bold text-sky-muted uppercase tracking-widest mb-1">Density Altitude</h3>
+      <p class="text-6xl font-thin text-avionics-amber mt-2 font-mono flex items-baseline justify-center gap-2">
+        {{ densityAltitude() | number:'1.0-0' }}
+        <span class="text-lg text-sky-muted font-normal">ft</span>
+      </p>
+
       @if (densityAltitude() > pressureAltitude() + 1000) {
-        <p class="text-amber-500 mt-2 text-sm">High DA: Aircraft performance will be reduced.</p>
+      <div
+        class="mt-4 inline-flex items-center gap-2 px-3 py-1 bg-avionics-amber/10 text-avionics-amber rounded-full text-xs font-bold uppercase tracking-wide border border-avionics-amber/20">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        High Performance Impact
+      </div>
       }
     </div>
   </div>

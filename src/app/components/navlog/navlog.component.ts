@@ -1,8 +1,8 @@
 @Component({
-    selector: 'app-navlog',
-    imports: [FormsModule],
-    templateUrl: './navlog.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-navlog',
+  imports: [FormsModule, DecimalPipe],
+  templateUrl: './navlog.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavlogComponent {
   navlogRows = signal<NavlogEntry[]>([this.createEmptyRow(), this.createEmptyRow()]);
@@ -151,6 +151,7 @@ export class NavlogComponent {
 
 import { Component, ChangeDetectionStrategy, signal, computed } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DecimalPipe } from '@angular/common';
 
 export interface NavlogEntry {
   id: number;

@@ -1,11 +1,12 @@
 import { Component, ChangeDetectionStrategy, signal, computed } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
-    selector: 'app-pa-da-calculator',
-    imports: [FormsModule],
-    templateUrl: './calculator.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-pa-da-calculator',
+  imports: [FormsModule, DecimalPipe],
+  templateUrl: './calculator.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PaDaCalculatorComponent {
   fieldElevation = signal(0);

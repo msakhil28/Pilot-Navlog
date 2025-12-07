@@ -3,11 +3,23 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { Place, FlightPlan } from '../models/place.model';
 import { AirportDetails } from '../models/airport-details.model';
 
+import { environment } from '../../../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class GeminiService {
-  private readonly ai = new GoogleGenAI({ apiKey: 'AIzaSyCm5E5CCZh1RhGLZ6jjUXw7AdDONRp6nMo' as string });
+  private readonly ai: GoogleGenAI;
+
+  constructor() {
+    const key = 'navlog-secret';
+    // 1. Decode the Base64 string to get the "encrypted" characters
+    const encryptedBytes = atob(environment.gemini.apiKey);
+    // 2. XOR decrypt
+    const decrypted = encryptedBytes.split('').map((c, i) => String.fromCharCode(c.charCodeAt(0) ^ key.charCodeAt(i % key.length))).join('');
+
+    this.ai = new GoogleGenAI({ apiKey: decrypted });
+  }
 
   /**
    * Step 1: Acts like a database to get an exhaustive list of airport identifiers.
@@ -50,28 +62,28 @@ export class GeminiService {
 
     if (airportIdentifiers.length === 0) {
       // If no airports are found, we can short-circuit and return an empty plan.
-       const departureAirportResponse = await this.ai.models.generateContent({
+      const departureAirportResponse = await this.ai.models.generateContent({
         model: 'gemini-2.5-flash',
         contents: `Get me the identifier, latitude and longitude for airport ${airportId}`,
         config: {
-            responseMimeType: 'application/json',
-            responseSchema: {
-                type: Type.OBJECT,
-                properties: {
-                    identifier: { type: Type.STRING },
-                    latitude: { type: Type.NUMBER },
-                    longitude: { type: Type.NUMBER }
-                },
-                required: ["identifier", "latitude", "longitude"]
-            }
+          responseMimeType: 'application/json',
+          responseSchema: {
+            type: Type.OBJECT,
+            properties: {
+              identifier: { type: Type.STRING },
+              latitude: { type: Type.NUMBER },
+              longitude: { type: Type.NUMBER }
+            },
+            required: ["identifier", "latitude", "longitude"]
+          }
         }
-       });
-       const depAirport = JSON.parse(departureAirportResponse.text);
+      });
+      const depAirport = JSON.parse(departureAirportResponse.text);
       return { departure_airport: depAirport, destinations: [] };
     }
 
     // Step 2: Enrich the list with details.
-    const typeFilterPrompt = placeType !== 'All' 
+    const typeFilterPrompt = placeType !== 'All'
       ? `From this list, only provide details for destinations that match the type "${placeType}". If none match, return an empty destinations array.`
       : `For each airport, determine if it's an interesting destination. Classify it as 'Restaurant','Scenic', 'Viewpoint', 'Activity', or 'Airport'. The 'Airport' type is for airports interesting on their own (e.g., a museum on the field, a unique approach).`;
 

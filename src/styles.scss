@@ -1,1 +1,60 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    @apply bg-sky-dark text-sky-text antialiased;
+    background-image: radial-gradient(circle at 50% 0%, #1e293b 0%, #0f172a 60%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  /* Force browser to use dark defaults for form controls */
+  :root {
+    color-scheme: dark;
+  }
+
+  /* Global Input Reset */
+  input,
+  select,
+  textarea {
+    @apply text-white bg-sky-dark/20 border-white/10;
+  }
+}
+
+/* Custom Scrollbar for a premium feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-sky-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-sky-light rounded-full border border-sky-dark;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-flight-blue;
+}
+
+/* Fix for Chrome/Safari AutoFill background becoming white */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: white !important;
+  -webkit-box-shadow: 0 0 0px 1000px #0f172a inset !important;
+  /* Matches bg-sky-dark */
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Ensure placeholders are visible */
+::placeholder {
+  @apply text-sky-muted/50;
+}
