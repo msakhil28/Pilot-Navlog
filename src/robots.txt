@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pilot-navlog-v1.web.app/sitemap.xml
