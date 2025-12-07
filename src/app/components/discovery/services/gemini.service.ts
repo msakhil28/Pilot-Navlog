@@ -85,21 +85,44 @@ export class GeminiService {
     // Step 2: Enrich the list with details.
     const typeFilterPrompt = placeType !== 'All'
       ? `From this list, only provide details for destinations that match the type "${placeType}". If none match, return an empty destinations array.`
-      : `For each airport, determine if it's an interesting destination. Classify it as 'Restaurant','Scenic', 'Viewpoint', 'Activity', or 'Airport'. The 'Airport' type is for airports interesting on their own (e.g., a museum on the field, a unique approach).`;
+      : `For each airport, determine if it's an interesting destination. Classify it as 'Restaurant', 'Scenic', 'Viewpoint', 'Activity', 'Scenic-Route', or 'Airport'. 
+      
+      IMPORTANT: Also consider and include:
+      - Scenic VFR corridors and routes (e.g., Hudson River SFRA from KEWR/KTEB, LAX Coastal Route, San Francisco Bay Tour)
+      - Special Flight Rules Areas (SFRAs) with sightseeing value
+      - Famous aviation landmarks and points of interest
+      - Unique airport experiences (mountain airports, island airports, challenging approaches)
+      - Popular flight training areas with scenic value
+      
+      The 'Scenic-Route' type is for VFR corridors, transition routes, and scenic flight paths that aren't necessarily airports.
+      The 'Airport' type is for airports interesting on their own (e.g., a museum on the field, a unique approach, historical significance).`;
 
     const prompt = `
-      You are an expert pilot's guide for general aviation. The pilot is departing from ${airportId}.
+      You are an expert pilot's guide for general aviation with deep knowledge of scenic routes and special airspace. 
+      The pilot is departing from ${airportId}.
+      
       I have a definitive list of airport identifiers that are within the desired flight distance: [${airportIdentifiers.join(', ')}].
-      Your task is to provide detailed information for these destinations.
+      
+      Your task is to provide detailed information for these destinations AND suggest relevant scenic routes/special airspace.
 
       ${typeFilterPrompt}
 
+      CRITICAL: If departing from airports near major cities or scenic areas, ALWAYS include:
+      - KEWR/KTEB/KLDJ → Hudson River SFRA (scenic route along Hudson River, Statue of Liberty, NYC skyline)
+      - KLAX/KSMO/KVNY → LAX Coastal Route (scenic coastal flight, Malibu, Santa Monica)
+      - KSQL/KPAO/KHWD → San Francisco Bay Tour (Golden Gate Bridge, Alcatraz, Bay Bridge)
+      - KOSH → EAA Aviation Museum and AirVenture sites
+      - Any mountain airports → Mention challenging approaches and scenic mountain flying
+
       For each resulting destination, provide:
-      - A short, engaging description for a pilot.
-      - Its official name.
-      - Its type ('Restaurant','Scenic', 'Viewpoint', 'Activity', 'Airport').
-      - The distance in nautical miles from ${airportId}.
-      - The latitude and longitude of both the departure airport (${airportId}) and each destination airport.
+      - A short, engaging description for a pilot (mention what makes it special for flying)
+      - Its official name (for scenic routes, use descriptive names like "Hudson River SFRA" or "NYC Skyline Tour")
+      - Its type ('Restaurant','Scenic', 'Viewpoint', 'Activity', 'Scenic-Route', 'Airport')
+      - The distance in nautical miles from ${airportId}
+      - The latitude and longitude of both the departure airport (${airportId}) and each destination airport
+      - For scenic routes, use the midpoint or entry point coordinates
+      
+      Prioritize diversity: mix of nearby airports (40%), scenic routes (30%), unique destinations (20%), and landmarks (10%).
       
       Return the results strictly in the specified JSON format.
     `;

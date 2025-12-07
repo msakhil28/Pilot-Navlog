@@ -1,14 +1,33 @@
 <div class="flex flex-col lg:flex-row gap-8 items-stretch h-full">
 
   <!-- Visual Instrument (Compass Rose) -->
+  <!-- Visual Instrument (Compass Rose) -->
   <div
-    class="lg:w-1/2 flex items-center justify-center p-8 bg-black/20 rounded-3xl border border-white/5 relative overflow-hidden">
+    class="lg:w-1/2 flex flex-col items-center justify-center p-8 bg-black/20 rounded-3xl border border-white/5 relative overflow-hidden gap-8">
+
+    <!-- Selection Toggle -->
+    <div class="flex p-1 bg-black/40 rounded-xl border border-white/10 relative z-30">
+      <button (click)="selectElement('runway')"
+        [class]="selectedElement() === 'runway' ? 'bg-slate-700 text-white shadow-lg' : 'text-sky-muted hover:text-white'"
+        class="px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300">
+        Runway
+      </button>
+      <button (click)="selectElement('wind')"
+        [class]="selectedElement() === 'wind' ? 'bg-flight-blue text-white shadow-lg' : 'text-sky-muted hover:text-white'"
+        class="px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300">
+        Wind
+      </button>
+    </div>
+
     <!-- Background Grid -->
     <div
       class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px]">
     </div>
 
-    <div class="relative w-72 h-72 sm:w-80 sm:h-80">
+    <!-- Interactive Container -->
+    <div class="relative w-72 h-72 sm:w-80 sm:h-80 cursor-pointer active:cursor-grabbing touch-none"
+      (mousedown)="onDragStart($event)" (touchstart)="onDragStart($event)" style="touch-action: none;">
+
       <!-- Bezel -->
       <div
         class="absolute inset-0 rounded-full border-[6px] border-[#1e293b] shadow-[0_0_50px_rgba(0,0,0,0.5)] bg-[#0f172a] box-border z-0">
@@ -24,10 +43,11 @@
         <div class="absolute right-4 text-xs font-bold text-sky-muted">E</div>
 
         <!-- Runway Indicator -->
-        <div class="absolute w-full h-full transition-transform duration-700 ease-out"
-          [style.transform]="runwayRotation()">
+        <div class="absolute w-full h-full transition-all duration-700 ease-out z-10"
+          [style.transform]="runwayRotation()" [class.opacity-40]="selectedElement() === 'wind'"
+          [class.opacity-100]="selectedElement() === 'runway'">
           <div
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-48 bg-slate-700 rounded-full border-x-2 border-dashed border-white/20">
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-48 bg-slate-700 rounded-full border-x-2 border-dashed border-white/20">
           </div>
           <div
             class="absolute top-14 left-1/2 -translate-x-1/2 text-[10px] font-bold text-white bg-black/50 px-1 rounded transform -rotate-180">
@@ -38,15 +58,15 @@
         </div>
 
         <!-- Wind Vector -->
-        <div class="absolute w-full h-full transition-transform duration-700 ease-out pointer-events-none"
-          [style.transform]="windRotation()">
+        <div class="absolute w-full h-full transition-all duration-700 ease-out z-20" [style.transform]="windRotation()"
+          [class.opacity-40]="selectedElement() === 'runway'" [class.opacity-100]="selectedElement() === 'wind'">
           <!-- Arrow Shaft -->
           <div
-            class="absolute top-8 left-1/2 -translate-x-1/2 w-1 h-32 bg-gradient-to-b from-flight-blue to-transparent opacity-80">
+            class="absolute top-8 left-1/2 -translate-x-1/2 w-1 h-32 bg-gradient-to-b from-flight-blue to-transparent opacity-80 pointer-events-none">
           </div>
           <!-- Arrow Head (Wind Origin) -->
           <div
-            class="absolute top-8 left-1/2 -translate-x-1/2 -translate-y-1 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[12px] border-t-flight-blue filter drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]">
+            class="absolute top-8 left-1/2 -translate-x-1/2 -translate-y-1 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[12px] border-t-flight-blue filter drop-shadow-[0_0_8px_rgba(59,130,246,0.8)] pointer-events-none">
           </div>
         </div>
 
@@ -54,6 +74,7 @@
         <div
           class="absolute w-8 h-8 rounded-full bg-sky-dark border-2 border-white/20 z-30 flex items-center justify-center shadow-xl">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
+
             <path
               d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
           </svg>

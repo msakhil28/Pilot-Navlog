@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input } from '@angular/core';
 
 import { PaDaCalculatorComponent } from '../calculator/calculator.component';
 import { TsdCalculatorComponent } from './tsd-calculator/tsd-calculator.component';
@@ -8,11 +8,6 @@ import { WindComponentCalculatorComponent } from './wind-component-calculator/wi
 import { ConversionsCalculatorComponent } from './conversions-calculator/conversions-calculator.component';
 
 type CalculatorId = 'pa-da' | 'tsd' | 'fuel' | 'tas' | 'wind' | 'conversions';
-
-interface Calculator {
-  id: CalculatorId;
-  name: string;
-}
 
 @Component({
   selector: 'app-calculators-hub',
@@ -28,18 +23,5 @@ interface Calculator {
   ]
 })
 export class CalculatorsHubComponent {
-  calculators: Calculator[] = [
-    { id: 'pa-da', name: 'Pressure & Density Altitude' },
-    { id: 'tsd', name: 'Time, Speed, Distance' },
-    { id: 'fuel', name: 'Fuel Planner' },
-    { id: 'tas', name: 'True Airspeed (TAS)' },
-    { id: 'wind', name: 'Wind Component' },
-    { id: 'conversions', name: 'Conversions' }
-  ];
-
-  activeCalculator = signal<CalculatorId>('pa-da');
-
-  setActiveCalculator(id: CalculatorId): void {
-    this.activeCalculator.set(id);
-  }
+  activeCalculator = input.required<CalculatorId>();
 }
