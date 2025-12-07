@@ -1,0 +1,24 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skyGradient" x1="0" y1="0" x2="1024" y2="1024" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#00C6FF" />
+      <stop offset="100%" stop-color="#0072FF" />
+    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="20" stdDeviation="20" flood-color="#000000" flood-opacity="0.25" />
+    </filter>
+  </defs>
+  
+  <!-- Background Container -->
+  <rect x="0" y="0" width="1024" height="1024" rx="220" fill="url(#skyGradient)" />
+  
+  <!-- Compass/Navigation Elements -->
+  <circle cx="512" cy="512" r="300" stroke="white" stroke-width="20" stroke-opacity="0.2" fill="none" />
+  <path d="M512 212 V262 M512 762 V812 M212 512 H262 M762 512 H812" stroke="white" stroke-width="20" stroke-linecap="round" stroke-opacity="0.3" />
+
+  <!-- Airplane Icon -->
+  <g transform="translate(512, 512) rotate(-45) translate(-512, -512)" filter="url(#shadow)">
+    <path d="M512 280 L620 600 L512 540 L404 600 Z" fill="white" />
+    <path d="M512 280 L620 600 L512 540" fill="#E0E0E0" /> <!-- Subtle shading for depth -->
+  </g>
+</svg>

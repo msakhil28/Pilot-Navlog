@@ -4,11 +4,13 @@ import { CalculatorsHubComponent } from './components/calculators/calculators-hu
 import { DiscoveryHubComponent } from './components/discovery/discovery-hub/discovery-hub.component';
 import { TitleCasePipe } from '@angular/common';
 
+import { AdSenseComponent } from './features/ads/adsense.component';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NavlogComponent, CalculatorsHubComponent, DiscoveryHubComponent, TitleCasePipe]
+  imports: [NavlogComponent, CalculatorsHubComponent, DiscoveryHubComponent, TitleCasePipe, AdSenseComponent]
 })
 export class AppComponent {
   activeView = signal<'navlog' | 'calculator' | 'discovery'>('calculator');
