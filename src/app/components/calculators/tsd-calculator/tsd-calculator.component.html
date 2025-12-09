@@ -1,37 +1,67 @@
 <div class="flex flex-col gap-8 md:flex-row">
   <!-- Input Form -->
   <div class="w-full md:w-1/2">
-    <h2 class="text-2xl font-semibold mb-4 text-[#e6edf3]">Time, Speed, Distance</h2>
+    <h2 class="text-2xl font-semibold mb-4 text-white">Time, Speed, Distance</h2>
     <form class="space-y-6">
-      <div>
-        <label for="calculate" class="block text-sm font-medium text-[#7d8590]">Calculate</label>
-        <select [(ngModel)]="mode" name="calculate" class="mt-1 block w-full bg-[#0d1117] border border-[#30363d] rounded-md shadow-sm py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7] sm:text-sm">
-          <option value="time">Time</option>
-          <option value="speed">Speed</option>
-          <option value="distance">Distance</option>
-        </select>
+      <div class="group">
+        <label for="calculate"
+          class="block text-xs font-bold text-sky-muted uppercase tracking-wider mb-2 group-focus-within:text-flight-blue transition-colors">Calculate</label>
+        <div class="relative">
+          <select [(ngModel)]="mode" name="calculate"
+            class="block w-full appearance-none bg-sky-dark/50 border border-white/10 rounded-xl py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-flight-blue focus:border-transparent transition-all pr-8">
+            <option value="time">Time</option>
+            <option value="speed">Speed</option>
+            <option value="distance">Distance</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-white">
+            <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path
+                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+            </svg>
+          </div>
+        </div>
       </div>
 
-      <div>
-        <label for="time" class="block text-sm font-medium text-[#7d8590]">Time (minutes)</label>
-        <input type="number" [(ngModel)]="time" name="time" [disabled]="mode() === 'time'" [class]="mode() === 'time' ? 'disabled:opacity-50' : ''" class="mt-1 w-full bg-[#0d1117] border border-[#30363d] rounded-md py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7]">
+      <div class="group">
+        <label for="time"
+          class="block text-xs font-bold text-sky-muted uppercase tracking-wider mb-2 group-focus-within:text-flight-blue transition-colors">Time
+          (minutes)</label>
+        <input type="number" [(ngModel)]="time" name="time" [disabled]="mode() === 'time'"
+          [class]="mode() === 'time' ? 'opacity-50 cursor-not-allowed' : ''"
+          class="block w-full bg-sky-dark/50 border border-white/10 rounded-xl py-3 px-4 text-white placeholder-sky-muted/30 focus:outline-none focus:ring-2 focus:ring-flight-blue focus:border-transparent transition-all">
       </div>
-       <div>
-        <label for="speed" class="block text-sm font-medium text-[#7d8590]">Speed (knots)</label>
-        <input type="number" [(ngModel)]="speed" name="speed" [disabled]="mode() === 'speed'" [class]="mode() === 'speed' ? 'disabled:opacity-50' : ''" class="mt-1 w-full bg-[#0d1117] border border-[#30363d] rounded-md py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7]">
+      <div class="group">
+        <label for="speed"
+          class="block text-xs font-bold text-sky-muted uppercase tracking-wider mb-2 group-focus-within:text-flight-blue transition-colors">Speed
+          (knots)</label>
+        <input type="number" [(ngModel)]="speed" name="speed" [disabled]="mode() === 'speed'"
+          [class]="mode() === 'speed' ? 'opacity-50 cursor-not-allowed' : ''"
+          class="block w-full bg-sky-dark/50 border border-white/10 rounded-xl py-3 px-4 text-white placeholder-sky-muted/30 focus:outline-none focus:ring-2 focus:ring-flight-blue focus:border-transparent transition-all">
       </div>
-       <div>
-        <label for="distance" class="block text-sm font-medium text-[#7d8590]">Distance (nm)</label>
-        <input type="number" [(ngModel)]="distance" name="distance" [disabled]="mode() === 'distance'" [class]="mode() === 'distance' ? 'disabled:opacity-50' : ''" class="mt-1 w-full bg-[#0d1117] border border-[#30363d] rounded-md py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7]">
+      <div class="group">
+        <label for="distance"
+          class="block text-xs font-bold text-sky-muted uppercase tracking-wider mb-2 group-focus-within:text-flight-blue transition-colors">Distance
+          (nm)</label>
+        <input type="number" [(ngModel)]="distance" name="distance" [disabled]="mode() === 'distance'"
+          [class]="mode() === 'distance' ? 'opacity-50 cursor-not-allowed' : ''"
+          class="block w-full bg-sky-dark/50 border border-white/10 rounded-xl py-3 px-4 text-white placeholder-sky-muted/30 focus:outline-none focus:ring-2 focus:ring-flight-blue focus:border-transparent transition-all">
       </div>
     </form>
   </div>
 
   <!-- Results Display -->
   <div class="w-full md:w-1/2 flex items-center justify-center">
-     <div class="bg-[#0d1117] border border-[#30363d] p-6 rounded-lg text-center w-full">
-      <h3 class="text-lg font-medium text-[#7d8590] capitalize">{{ mode() }}</h3>
-      <p class="text-5xl font-bold text-sky-400 mt-2">{{ result() }}</p>
+    <div
+      class="bg-sky-dark/50 border border-white/10 p-8 rounded-2xl text-center w-full relative overflow-hidden group hover:bg-sky-dark/60 transition-colors">
+      <div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-32 w-32 text-white" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <h3 class="text-sm font-bold text-sky-muted uppercase tracking-widest mb-1 capitalize">{{ mode() }}</h3>
+      <p class="text-6xl font-thin text-flight-blue mt-4 font-mono">{{ result() }}</p>
     </div>
   </div>
 </div>

@@ -7,7 +7,7 @@
 
     <!-- Logo / Brand -->
     <div class="p-8 pb-4">
-      <div class="flex items-center gap-3 mb-1">
+      <div class="flex items-center gap-3 mb-1 cursor-pointer" (click)="setView('home')">
         <div class="bg-gradient-to-br from-flight-blue to-blue-600 p-2.5 rounded-xl shadow-lg shadow-blue-500/20">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
@@ -16,7 +16,7 @@
           </svg>
         </div>
         <div>
-          <h1 class="text-xl font-bold tracking-tight text-white leading-none">Pilot<span
+          <h1 class="text-xl font-bold text-white tracking-tight leading-none">Pilot<span
               class="text-flight-blue">Resources</span></h1>
           <span class="text-[10px] uppercase tracking-[0.2em] text-sky-muted font-medium">Flight Assistant</span>
         </div>
@@ -25,6 +25,26 @@
 
     <!-- Navigation Links -->
     <nav class="flex-1 px-4 space-y-2 mt-8">
+
+      <!-- Home Section -->
+      <div class="mb-2">
+        <button (click)="setView('home')" [class.bg-flight-blue]="activeView() === 'home'"
+          [class.shadow-lg]="activeView() === 'home'" [class.shadow-flight-blue/25]="activeView() === 'home'"
+          [class.text-white]="activeView() === 'home'" [class.text-sky-muted]="activeView() !== 'home'"
+          class="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl transition-all duration-200 hover:bg-white/5 group border border-transparent"
+          [class.border-white-10]="activeView() !== 'home' && 'hover:border-white/10'">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-colors"
+            [class.text-white]="activeView() === 'home'" [class.text-sky-muted]="activeView() !== 'home'" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+          <span class="font-medium text-sm">Home</span>
+          @if (activeView() === 'home') {
+          <div class="ml-auto w-1.5 h-1.5 rounded-full bg-white animate-pulse"></div>
+          }
+        </button>
+      </div>
 
       <!-- Discovery Section -->
       <div class="mb-6">
@@ -112,6 +132,13 @@
           </p>
         </div>
       </div>
+
+      <div class="mt-4 mb-2 flex flex-wrap gap-3 text-[10px] text-sky-muted/60">
+        <button (click)="setView('privacy')" class="hover:text-white transition-colors">Privacy</button>
+        <span>•</span>
+        <button (click)="setView('terms')" class="hover:text-white transition-colors">Terms</button>
+      </div>
+
       <!-- Web Ads -->
       <app-adsense></app-adsense>
     </div>
@@ -135,7 +162,7 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-2" (click)="setView('home')">
         <div class="bg-gradient-to-br from-flight-blue to-blue-600 p-2 rounded-lg shadow-lg shadow-blue-500/20">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
@@ -191,6 +218,15 @@
         @case ('discovery') {
         <app-discovery-hub></app-discovery-hub>
         }
+        @case ('home') {
+        <app-landing-page></app-landing-page>
+        }
+        @case ('privacy') {
+        <app-privacy-policy></app-privacy-policy>
+        }
+        @case ('terms') {
+        <app-terms></app-terms>
+        }
         }
       </div>
     </div>
@@ -201,6 +237,17 @@
     class="xl:hidden fixed bottom-0 left-0 right-0 z-30 bg-[#1e293b]/95 backdrop-blur-xl border-t border-white/5 shadow-2xl"
     style="padding-bottom: env(safe-area-inset-bottom);">
     <nav class="flex justify-around items-center py-3 px-2">
+      <button (click)="setView('home')" [class.text-flight-blue]="activeView() === 'home'"
+        [class.text-sky-muted]="activeView() !== 'home'"
+        class="flex flex-col items-center gap-1 px-4 py-2 rounded-xl transition-all duration-200"
+        [class.bg-flight-blue/10]="activeView() === 'home'">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg>
+        <span class="text-[10px] font-medium">Home</span>
+      </button>
+
       <button (click)="setView('discovery')" [class.text-flight-blue]="activeView() === 'discovery'"
         [class.text-sky-muted]="activeView() !== 'discovery'"
         class="flex flex-col items-center gap-1 px-4 py-2 rounded-xl transition-all duration-200"

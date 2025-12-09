@@ -1,36 +1,61 @@
 <div class="flex flex-col gap-8 md:flex-row">
   <!-- Input Form -->
   <div class="w-full md:w-1/2">
-    <h2 class="text-2xl font-semibold mb-4 text-[#e6edf3]">Fuel Planner</h2>
+    <h2 class="text-2xl font-semibold mb-4 text-white">Fuel Planner</h2>
     <form class="space-y-6">
-      <div>
-        <label for="cruise-burn" class="block text-sm font-medium text-[#7d8590]">Cruise Fuel Burn (gal/hr)</label>
-        <input type="number" [(ngModel)]="cruiseBurn" name="cruise-burn" class="mt-1 w-full bg-[#0d1117] border border-[#30363d] rounded-md py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7]">
+      <div class="group">
+        <label for="cruise-burn"
+          class="block text-xs font-bold text-sky-muted uppercase tracking-wider mb-2 group-focus-within:text-flight-blue transition-colors">Cruise
+          Fuel Burn (gal/hr)</label>
+        <input type="number" [(ngModel)]="cruiseBurn" name="cruise-burn"
+          class="block w-full bg-sky-dark/50 border border-white/10 rounded-xl py-3 px-4 text-white placeholder-sky-muted/30 focus:outline-none focus:ring-2 focus:ring-flight-blue focus:border-transparent transition-all">
       </div>
-      <div>
-        <label for="cruise-time" class="block text-sm font-medium text-[#7d8590]">Cruise Time (minutes)</label>
-        <input type="number" [(ngModel)]="cruiseTime" name="cruise-time" class="mt-1 w-full bg-[#0d1117] border border-[#30363d] rounded-md py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7]">
+      <div class="group">
+        <label for="cruise-time"
+          class="block text-xs font-bold text-sky-muted uppercase tracking-wider mb-2 group-focus-within:text-flight-blue transition-colors">Cruise
+          Time (minutes)</label>
+        <input type="number" [(ngModel)]="cruiseTime" name="cruise-time"
+          class="block w-full bg-sky-dark/50 border border-white/10 rounded-xl py-3 px-4 text-white placeholder-sky-muted/30 focus:outline-none focus:ring-2 focus:ring-flight-blue focus:border-transparent transition-all">
       </div>
-      <div>
-        <label for="climb-fuel" class="block text-sm font-medium text-[#7d8590]">Taxi & Climb Fuel (gal)</label>
-        <input type="number" [(ngModel)]="climbFuel" name="climb-fuel" class="mt-1 w-full bg-[#0d1117] border border-[#30363d] rounded-md py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7]">
+      <div class="group">
+        <label for="climb-fuel"
+          class="block text-xs font-bold text-sky-muted uppercase tracking-wider mb-2 group-focus-within:text-flight-blue transition-colors">Taxi
+          & Climb Fuel (gal)</label>
+        <input type="number" [(ngModel)]="climbFuel" name="climb-fuel"
+          class="block w-full bg-sky-dark/50 border border-white/10 rounded-xl py-3 px-4 text-white placeholder-sky-muted/30 focus:outline-none focus:ring-2 focus:ring-flight-blue focus:border-transparent transition-all">
       </div>
-      <div>
-        <label for="reserve-time" class="block text-sm font-medium text-[#7d8590]">Reserve Time (minutes)</label>
-        <input type="number" [(ngModel)]="reserveTime" name="reserve-time" class="mt-1 w-full bg-[#0d1117] border border-[#30363d] rounded-md py-2 px-3 text-[#e6edf3] focus:outline-none focus:ring-[#2f81f7] focus:border-[#2f81f7]">
+      <div class="group">
+        <label for="reserve-time"
+          class="block text-xs font-bold text-sky-muted uppercase tracking-wider mb-2 group-focus-within:text-flight-blue transition-colors">Reserve
+          Time (minutes)</label>
+        <input type="number" [(ngModel)]="reserveTime" name="reserve-time"
+          class="block w-full bg-sky-dark/50 border border-white/10 rounded-xl py-3 px-4 text-white placeholder-sky-muted/30 focus:outline-none focus:ring-2 focus:ring-flight-blue focus:border-transparent transition-all">
       </div>
     </form>
   </div>
 
   <!-- Results Display -->
   <div class="w-full md:w-1/2 flex flex-col gap-6">
-    <div class="bg-[#0d1117] border border-[#30363d] p-6 rounded-lg">
-      <h3 class="text-lg font-medium text-[#7d8590] mb-4">Fuel Breakdown</h3>
-      <div class="space-y-3 text-lg">
-        <div class="flex justify-between"><span>Taxi & Climb:</span> <span>{{ climbFuel() }} gal</span></div>
-        <div class="flex justify-between"><span>Cruise:</span> <span>{{ cruiseFuel().toFixed(1) }} gal</span></div>
-        <div class="flex justify-between border-b border-[#30363d] pb-3"><span>Reserve:</span> <span>{{ reserveFuel().toFixed(1) }} gal</span></div>
-        <div class="flex justify-between font-bold text-[#e6edf3] pt-2"><span>Total Required:</span> <span>{{ totalFuel().toFixed(1) }} gal</span></div>
+    <div class="bg-sky-dark/50 border border-white/10 p-8 rounded-2xl">
+      <h3 class="text-sm font-bold text-sky-muted uppercase tracking-wider mb-6">Fuel Breakdown</h3>
+      <div class="space-y-4 text-lg">
+        <div class="flex justify-between items-center bg-white/5 p-3 rounded-lg border border-white/5">
+          <span class="text-sky-muted text-sm">Taxi & Climb</span>
+          <span class="text-white font-mono">{{ climbFuel() }} gal</span>
+        </div>
+        <div class="flex justify-between items-center bg-white/5 p-3 rounded-lg border border-white/5">
+          <span class="text-sky-muted text-sm">Cruise</span>
+          <span class="text-white font-mono">{{ cruiseFuel().toFixed(1) }} gal</span>
+        </div>
+        <div class="flex justify-between items-center bg-white/5 p-3 rounded-lg border border-white/5">
+          <span class="text-sky-muted text-sm">Reserve</span>
+          <span class="text-white font-mono">{{ reserveFuel().toFixed(1) }} gal</span>
+        </div>
+        <div
+          class="flex justify-between items-center bg-flight-blue/10 border border-flight-blue/20 p-4 rounded-xl mt-4">
+          <span class="text-flight-blue font-bold uppercase text-sm">Total Required</span>
+          <span class="text-2xl font-bold text-white font-mono">{{ totalFuel().toFixed(1) }} gal</span>
+        </div>
       </div>
     </div>
   </div>

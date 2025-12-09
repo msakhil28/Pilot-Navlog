@@ -2,6 +2,9 @@ import { Component, signal, effect, ChangeDetectionStrategy } from '@angular/cor
 import { NavlogComponent } from './components/navlog/navlog.component';
 import { CalculatorsHubComponent } from './components/calculators/calculators-hub.component';
 import { DiscoveryHubComponent } from './components/discovery/discovery-hub/discovery-hub.component';
+import { LandingPageComponent } from './components/home/landing-page.component';
+import { PrivacyPolicyComponent } from './components/policy/privacy-policy.component';
+import { TermsComponent } from './components/policy/terms.component';
 import { TitleCasePipe } from '@angular/common';
 
 import { AdSenseComponent } from './features/ads/adsense.component';
@@ -10,10 +13,19 @@ import { AdSenseComponent } from './features/ads/adsense.component';
   selector: 'app-root',
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NavlogComponent, CalculatorsHubComponent, DiscoveryHubComponent, TitleCasePipe, AdSenseComponent]
+  imports: [
+    NavlogComponent,
+    CalculatorsHubComponent,
+    DiscoveryHubComponent,
+    LandingPageComponent,
+    PrivacyPolicyComponent,
+    TermsComponent,
+    TitleCasePipe,
+    AdSenseComponent
+  ]
 })
 export class AppComponent {
-  activeView = signal<'navlog' | 'calculator' | 'discovery'>('calculator');
+  activeView = signal<'home' | 'navlog' | 'calculator' | 'discovery' | 'privacy' | 'terms'>('home');
   currentUtcTime = signal<string>('');
   sidebarOpen = signal<boolean>(true);
 
@@ -46,7 +58,7 @@ export class AppComponent {
     });
   }
 
-  setView(view: 'navlog' | 'calculator' | 'discovery'): void {
+  setView(view: 'home' | 'navlog' | 'calculator' | 'discovery' | 'privacy' | 'terms'): void {
     this.activeView.set(view);
   }
 

@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-    selector: 'app-conversions-calculator',
-    imports: [FormsModule],
-    templateUrl: './conversions-calculator.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-conversions-calculator',
+  imports: [FormsModule],
+  templateUrl: './conversions-calculator.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ConversionsCalculatorComponent {
   // Temperature
@@ -23,10 +23,24 @@ export class ConversionsCalculatorComponent {
   // Pressure
   inHg = signal<number | null>(null);
   hPa = signal<number | null>(null);
-  
+
   // Length
   feet = signal<number | null>(null);
   meters = signal<number | null>(null);
+
+  // Volume
+  gallons = signal<number | null>(null);
+  liters = signal<number | null>(null);
+
+  // Weight
+  pounds = signal<number | null>(null);
+  kilograms = signal<number | null>(null);
+
+  // Speed (Extra)
+  kph = signal<number | null>(null);
+
+  // Distance (Extra)
+  kilometers = signal<number | null>(null);
 
   private isUpdating = false;
 
@@ -37,7 +51,7 @@ export class ConversionsCalculatorComponent {
     if (value === null) {
       this.fahrenheit.set(null);
     } else {
-      this.fahrenheit.set(Number(((value * 9/5) + 32).toFixed(2)));
+      this.fahrenheit.set(Number(((value * 9 / 5) + 32).toFixed(2)));
     }
     this.isUpdating = false;
   }
@@ -49,7 +63,7 @@ export class ConversionsCalculatorComponent {
     if (value === null) {
       this.celsius.set(null);
     } else {
-      this.celsius.set(Number(((value - 32) * 5/9).toFixed(2)));
+      this.celsius.set(Number(((value - 32) * 5 / 9).toFixed(2)));
     }
     this.isUpdating = false;
   }
@@ -60,8 +74,10 @@ export class ConversionsCalculatorComponent {
     this.knots.set(value);
     if (value === null) {
       this.mph.set(null);
+      this.kph.set(null);
     } else {
       this.mph.set(Number((value * 1.15078).toFixed(2)));
+      this.kph.set(Number((value * 1.852).toFixed(2)));
     }
     this.isUpdating = false;
   }
@@ -72,20 +88,38 @@ export class ConversionsCalculatorComponent {
     this.mph.set(value);
     if (value === null) {
       this.knots.set(null);
+      this.kph.set(null);
     } else {
       this.knots.set(Number((value / 1.15078).toFixed(2)));
+      this.kph.set(Number((value * 1.60934).toFixed(2)));
     }
     this.isUpdating = false;
   }
-  
+
+  onKphChange(value: number | null) {
+    if (this.isUpdating) return;
+    this.isUpdating = true;
+    this.kph.set(value);
+    if (value === null) {
+      this.knots.set(null);
+      this.mph.set(null);
+    } else {
+      this.knots.set(Number((value / 1.852).toFixed(2)));
+      this.mph.set(Number((value / 1.60934).toFixed(2)));
+    }
+    this.isUpdating = false;
+  }
+
   onNmChange(value: number | null) {
     if (this.isUpdating) return;
     this.isUpdating = true;
     this.nauticalMiles.set(value);
     if (value === null) {
       this.statuteMiles.set(null);
+      this.kilometers.set(null);
     } else {
       this.statuteMiles.set(Number((value * 1.15078).toFixed(2)));
+      this.kilometers.set(Number((value * 1.852).toFixed(2)));
     }
     this.isUpdating = false;
   }
@@ -96,8 +130,24 @@ export class ConversionsCalculatorComponent {
     this.statuteMiles.set(value);
     if (value === null) {
       this.nauticalMiles.set(null);
+      this.kilometers.set(null);
     } else {
       this.nauticalMiles.set(Number((value / 1.15078).toFixed(2)));
+      this.kilometers.set(Number((value * 1.60934).toFixed(2)));
+    }
+    this.isUpdating = false;
+  }
+
+  onKmChange(value: number | null) {
+    if (this.isUpdating) return;
+    this.isUpdating = true;
+    this.kilometers.set(value);
+    if (value === null) {
+      this.nauticalMiles.set(null);
+      this.statuteMiles.set(null);
+    } else {
+      this.nauticalMiles.set(Number((value / 1.852).toFixed(2)));
+      this.statuteMiles.set(Number((value / 1.60934).toFixed(2)));
     }
     this.isUpdating = false;
   }
@@ -113,7 +163,7 @@ export class ConversionsCalculatorComponent {
     }
     this.isUpdating = false;
   }
-  
+
   onHpaChange(value: number | null) {
     if (this.isUpdating) return;
     this.isUpdating = true;
@@ -125,7 +175,7 @@ export class ConversionsCalculatorComponent {
     }
     this.isUpdating = false;
   }
-  
+
   onFeetChange(value: number | null) {
     if (this.isUpdating) return;
     this.isUpdating = true;
@@ -146,6 +196,54 @@ export class ConversionsCalculatorComponent {
       this.feet.set(null);
     } else {
       this.feet.set(Number((value / 0.3048).toFixed(2)));
+    }
+    this.isUpdating = false;
+  }
+
+  onGallonsChange(value: number | null) {
+    if (this.isUpdating) return;
+    this.isUpdating = true;
+    this.gallons.set(value);
+    if (value === null) {
+      this.liters.set(null);
+    } else {
+      this.liters.set(Number((value * 3.78541).toFixed(2)));
+    }
+    this.isUpdating = false;
+  }
+
+  onLitersChange(value: number | null) {
+    if (this.isUpdating) return;
+    this.isUpdating = true;
+    this.liters.set(value);
+    if (value === null) {
+      this.gallons.set(null);
+    } else {
+      this.gallons.set(Number((value / 3.78541).toFixed(2)));
+    }
+    this.isUpdating = false;
+  }
+
+  onPoundsChange(value: number | null) {
+    if (this.isUpdating) return;
+    this.isUpdating = true;
+    this.pounds.set(value);
+    if (value === null) {
+      this.kilograms.set(null);
+    } else {
+      this.kilograms.set(Number((value * 0.453592).toFixed(2)));
+    }
+    this.isUpdating = false;
+  }
+
+  onKilogramsChange(value: number | null) {
+    if (this.isUpdating) return;
+    this.isUpdating = true;
+    this.kilograms.set(value);
+    if (value === null) {
+      this.pounds.set(null);
+    } else {
+      this.pounds.set(Number((value / 0.453592).toFixed(2)));
     }
     this.isUpdating = false;
   }
