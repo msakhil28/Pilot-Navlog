@@ -7,7 +7,6 @@ import { PrivacyPolicyComponent } from './components/policy/privacy-policy.compo
 import { TermsComponent } from './components/policy/terms.component';
 import { TitleCasePipe } from '@angular/common';
 
-import { AdSenseComponent } from './features/ads/adsense.component';
 
 @Component({
   selector: 'app-root',
@@ -20,8 +19,7 @@ import { AdSenseComponent } from './features/ads/adsense.component';
     LandingPageComponent,
     PrivacyPolicyComponent,
     TermsComponent,
-    TitleCasePipe,
-    AdSenseComponent
+    TitleCasePipe
   ]
 })
 export class AppComponent {
