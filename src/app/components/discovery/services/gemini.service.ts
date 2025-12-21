@@ -12,13 +12,7 @@ export class GeminiService {
   private readonly ai: GoogleGenAI;
 
   constructor() {
-    const key = 'navlog-secret';
-    // 1. Decode the Base64 string to get the "encrypted" characters
-    const encryptedBytes = atob(environment.gemini.apiKey);
-    // 2. XOR decrypt
-    const decrypted = encryptedBytes.split('').map((c, i) => String.fromCharCode(c.charCodeAt(0) ^ key.charCodeAt(i % key.length))).join('');
-
-    this.ai = new GoogleGenAI({ apiKey: decrypted });
+    this.ai = new GoogleGenAI({ apiKey: environment.gemini.apiKey });
   }
 
   /**

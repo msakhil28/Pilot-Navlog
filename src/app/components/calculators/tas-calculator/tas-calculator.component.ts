@@ -33,7 +33,7 @@ export class TasCalculatorComponent {
     const T = (oat + 273.15); // OAT in Kelvin
 
     // Density at altitude (rho)
-    const P = P0 * Math.pow(1 - (L * paMeters) / T0, (g * 0.0289644) / (R * L));
+    const P = P0 * Math.pow(1 - (L * paMeters) / T0, g / (R * L));
     const rho = P / (R * (oat + 273.15));
 
     // Density at sea level (rho0)

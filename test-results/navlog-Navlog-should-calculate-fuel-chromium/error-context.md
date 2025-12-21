@@ -1,0 +1,219 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e6] [cursor=pointer]:
+      - img [ref=e8]
+      - generic [ref=e10]:
+        - heading "PilotResources" [level=1] [ref=e11]
+        - text: Flight Assistant
+    - navigation [ref=e12]:
+      - button "Home" [ref=e14] [cursor=pointer]:
+        - img [ref=e15]
+        - generic [ref=e17]: Home
+      - generic [ref=e18]:
+        - paragraph [ref=e19]: Mission Planning
+        - button "Discovery" [ref=e20] [cursor=pointer]:
+          - img [ref=e21]
+          - generic [ref=e23]: Discovery
+      - generic [ref=e24]:
+        - paragraph [ref=e25]: Enroute Tools
+        - button "Flight Log" [active] [ref=e26] [cursor=pointer]:
+          - img [ref=e27]
+          - generic [ref=e29]: Flight Log
+        - generic [ref=e31]:
+          - paragraph [ref=e32]: Calculators
+          - button "Pressure & Density Altitude" [ref=e33] [cursor=pointer]:
+            - img [ref=e34]
+            - generic [ref=e36]: Pressure & Density Altitude
+          - button "Time, Speed, Distance" [ref=e37] [cursor=pointer]:
+            - img [ref=e38]
+            - generic [ref=e40]: Time, Speed, Distance
+          - button "Fuel Planner" [ref=e41] [cursor=pointer]:
+            - img [ref=e42]
+            - generic [ref=e44]: Fuel Planner
+          - button "True Airspeed" [ref=e45] [cursor=pointer]:
+            - img [ref=e46]
+            - generic [ref=e48]: True Airspeed
+          - button "Wind Component" [ref=e49] [cursor=pointer]:
+            - img [ref=e50]
+            - generic [ref=e52]: Wind Component
+          - button "Conversions" [ref=e53] [cursor=pointer]:
+            - img [ref=e54]
+            - generic [ref=e56]: Conversions
+    - generic [ref=e57]:
+      - generic [ref=e60]:
+        - paragraph [ref=e61]: Pilot In Command
+        - paragraph [ref=e62]: ONLINE
+      - generic [ref=e64]:
+        - button "Privacy" [ref=e65] [cursor=pointer]
+        - generic [ref=e66]: •
+        - button "Terms" [ref=e67] [cursor=pointer]
+  - main [ref=e68]:
+    - generic [ref=e69]:
+      - generic [ref=e70]:
+        - generic [ref=e71]:
+          - button [ref=e72] [cursor=pointer]:
+            - img [ref=e73]
+          - generic [ref=e75]:
+            - heading "Current View" [level=2] [ref=e76]
+            - heading "Navlog" [level=1] [ref=e77]
+        - generic [ref=e78]:
+          - generic [ref=e79]: "UTC: 18:38Z"
+          - generic [ref=e80]: "|"
+          - generic [ref=e81]: Navlog
+      - generic [ref=e84]:
+        - generic [ref=e85]:
+          - generic [ref=e86]:
+            - heading "Active Flight Plan" [level=2] [ref=e87]
+            - paragraph [ref=e88]: 2 Navigation Legs
+          - generic [ref=e89]:
+            - generic [ref=e90]:
+              - paragraph [ref=e91]: Total Dist
+              - paragraph [ref=e92]: 0 NM
+            - generic [ref=e93]:
+              - paragraph [ref=e94]: Est. Time
+              - paragraph [ref=e95]: 00:00
+            - generic [ref=e96]:
+              - paragraph [ref=e97]: Total Fuel
+              - paragraph [ref=e98]: 0.0 Gal
+        - generic [ref=e99]:
+          - generic [ref=e101]:
+            - generic [ref=e106]:
+              - generic [ref=e107]:
+                - generic [ref=e108]:
+                  - generic [ref=e109]: Waypoint ID
+                  - textbox "IDENT" [ref=e110]
+                - generic [ref=e111]:
+                  - generic [ref=e112]:
+                    - generic [ref=e113]: VOR
+                    - textbox "---" [ref=e114]
+                  - generic [ref=e115]:
+                    - generic [ref=e116]: Freq
+                    - spinbutton [ref=e117]
+              - generic [ref=e118]:
+                - generic [ref=e119]:
+                  - generic [ref=e120]:
+                    - generic [ref=e121]: Course
+                    - spinbutton [ref=e122]
+                  - generic [ref=e123]:
+                    - generic [ref=e124]: Heading
+                    - generic [ref=e125]: "---°"
+                    - generic [ref=e126]: MH
+                  - generic [ref=e127]:
+                    - generic [ref=e128]: Dist (NM)
+                    - spinbutton [ref=e129]
+                - generic [ref=e130]:
+                  - generic [ref=e131]:
+                    - generic [ref=e132]: Wind Dir
+                    - spinbutton [ref=e133]
+                  - generic [ref=e134]:
+                    - generic [ref=e135]: Wind Vel
+                    - spinbutton [ref=e136]
+                  - generic [ref=e137]:
+                    - generic [ref=e138]: TAS
+                    - spinbutton [ref=e139]
+                  - generic [ref=e140]:
+                    - generic [ref=e141]: Var
+                    - textbox "±Var" [ref=e142]
+              - generic [ref=e143]:
+                - generic [ref=e144]:
+                  - generic [ref=e145]:
+                    - generic [ref=e146]: Ground Speed
+                    - generic [ref=e147]: "--- kts"
+                  - generic [ref=e148]:
+                    - generic [ref=e149]: ETE
+                    - generic [ref=e150]: "--:--"
+                - generic [ref=e151]:
+                  - generic [ref=e152]:
+                    - generic [ref=e153]: GPH
+                    - spinbutton [ref=e154]
+                  - generic [ref=e155]:
+                    - generic [ref=e156]: Fuel Req
+                    - generic [ref=e157]: "--"
+                  - button "Remove Leg" [ref=e158] [cursor=pointer]:
+                    - img [ref=e159]
+            - generic [ref=e165]:
+              - generic [ref=e166]:
+                - generic [ref=e167]:
+                  - generic [ref=e168]: Waypoint ID
+                  - textbox "IDENT" [ref=e169]
+                - generic [ref=e170]:
+                  - generic [ref=e171]:
+                    - generic [ref=e172]: VOR
+                    - textbox "---" [ref=e173]
+                  - generic [ref=e174]:
+                    - generic [ref=e175]: Freq
+                    - spinbutton [ref=e176]
+              - generic [ref=e177]:
+                - generic [ref=e178]:
+                  - generic [ref=e179]:
+                    - generic [ref=e180]: Course
+                    - spinbutton [ref=e181]
+                  - generic [ref=e182]:
+                    - generic [ref=e183]: Heading
+                    - generic [ref=e184]: "---°"
+                    - generic [ref=e185]: MH
+                  - generic [ref=e186]:
+                    - generic [ref=e187]: Dist (NM)
+                    - spinbutton [ref=e188]
+                - generic [ref=e189]:
+                  - generic [ref=e190]:
+                    - generic [ref=e191]: Wind Dir
+                    - spinbutton [ref=e192]
+                  - generic [ref=e193]:
+                    - generic [ref=e194]: Wind Vel
+                    - spinbutton [ref=e195]
+                  - generic [ref=e196]:
+                    - generic [ref=e197]: TAS
+                    - spinbutton [ref=e198]
+                  - generic [ref=e199]:
+                    - generic [ref=e200]: Var
+                    - textbox "±Var" [ref=e201]
+              - generic [ref=e202]:
+                - generic [ref=e203]:
+                  - generic [ref=e204]:
+                    - generic [ref=e205]: Ground Speed
+                    - generic [ref=e206]: "--- kts"
+                  - generic [ref=e207]:
+                    - generic [ref=e208]: ETE
+                    - generic [ref=e209]: "--:--"
+                - generic [ref=e210]:
+                  - generic [ref=e211]:
+                    - generic [ref=e212]: GPH
+                    - spinbutton [ref=e213]
+                  - generic [ref=e214]:
+                    - generic [ref=e215]: Fuel Req
+                    - generic [ref=e216]: "--"
+                  - button "Remove Leg" [ref=e217] [cursor=pointer]:
+                    - img [ref=e218]
+          - button [ref=e221] [cursor=pointer]:
+            - img [ref=e222]
+        - generic [ref=e224]:
+          - generic [ref=e225]:
+            - img [ref=e227]
+            - generic [ref=e229]:
+              - heading "Cross-Country Flight Planning" [level=2] [ref=e230]
+              - paragraph [ref=e231]: Instructions & Theory
+          - generic [ref=e232]:
+            - heading "Using the Digital Navlog" [level=3] [ref=e233]
+            - paragraph [ref=e234]: This tool replaces the traditional paper navigation log for VFR flight planning. It automatically calculates the Wind Correction Angle (WCA), Ground Speed (GS), Time Enroute (ETE), and Fuel Burn for each leg of your flight.
+            - heading "Step-by-Step Guide" [level=3] [ref=e235]
+            - list [ref=e236]:
+              - listitem [ref=e237]:
+                - strong [ref=e238]: "Define Waypoints:"
+                - text: Enter the ID for each checkpoint (e.g., "KDEN", "VOR").
+              - listitem [ref=e239]:
+                - strong [ref=e240]: "Measure Course & Distance:"
+                - text: Use your Sectional Chart or EFB to determine the True Course (TC) and Distance for each leg.
+              - listitem [ref=e241]:
+                - strong [ref=e242]: "Weather Data:"
+                - text: Input the Winds Aloft (Direction and Velocity) and True Airspeed (TAS) gathered from your performance charts.
+              - listitem [ref=e243]:
+                - strong [ref=e244]: "Results:"
+                - text: The tool instantly derives your True Heading (TH) and Ground Speed (GS). Add Magnetic Variation to get Magnetic Heading (MH).
+            - paragraph [ref=e246]:
+              - strong [ref=e247]: "Safety Note:"
+              - text: Always cross-check these values with a mechanical E6B or official flight planning software before flight. Gaps in terrain or airspace awareness are not accounted for in this simplified log.
+```

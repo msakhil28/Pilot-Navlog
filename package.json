@@ -29,6 +29,7 @@
     "@angular/build": "^20.2.2",
     "@angular/cli": "^20.2.2",
     "@angular/compiler-cli": "^20.2.4",
+    "@playwright/test": "^1.57.0",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^24.6.2",
     "jasmine-core": "~5.1.0",
