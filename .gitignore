@@ -24,3 +24,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment files (contains API keys)
+src/environments/environment.ts
+src/environments/environment.*.ts

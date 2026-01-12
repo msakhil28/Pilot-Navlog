@@ -5,6 +5,7 @@ import { DiscoveryHubComponent } from './components/discovery/discovery-hub/disc
 import { LandingPageComponent } from './components/home/landing-page.component';
 import { PrivacyPolicyComponent } from './components/policy/privacy-policy.component';
 import { TermsComponent } from './components/policy/terms.component';
+import { AiSicChatComponent } from './components/ai-sic/ai-sic-chat.component';
 import { TitleCasePipe } from '@angular/common';
 
 
@@ -19,11 +20,12 @@ import { TitleCasePipe } from '@angular/common';
     LandingPageComponent,
     PrivacyPolicyComponent,
     TermsComponent,
+    AiSicChatComponent,
     TitleCasePipe
   ]
 })
 export class AppComponent {
-  activeView = signal<'home' | 'navlog' | 'calculator' | 'discovery' | 'privacy' | 'terms'>('home');
+  activeView = signal<'home' | 'navlog' | 'calculator' | 'discovery' | 'ai-sic' | 'privacy' | 'terms'>('home');
   currentUtcTime = signal<string>('');
   sidebarOpen = signal<boolean>(true);
 
@@ -56,7 +58,7 @@ export class AppComponent {
     });
   }
 
-  setView(view: 'home' | 'navlog' | 'calculator' | 'discovery' | 'privacy' | 'terms'): void {
+  setView(view: 'home' | 'navlog' | 'calculator' | 'discovery' | 'ai-sic' | 'privacy' | 'terms'): void {
     this.activeView.set(view);
   }
 

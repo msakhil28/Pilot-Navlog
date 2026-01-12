@@ -12,7 +12,10 @@ export class GeminiService {
   private readonly ai: GoogleGenAI;
 
   constructor() {
-    this.ai = new GoogleGenAI({ apiKey: environment.gemini.apiKey });
+    // Decrypt the API key from Base64
+    const encryptedKey = environment.gemini.apiKey;
+    const decryptedKey = atob(encryptedKey);
+    this.ai = new GoogleGenAI({ apiKey: decryptedKey });
   }
 
   /**

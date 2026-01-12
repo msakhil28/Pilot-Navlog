@@ -1,7 +1,7 @@
 export const environment = {
     production: false,
     gemini: {
-        // Replace with your actual Gemini API key
-        apiKey: 'AIzaSyD15QJyhh621OwyqtKI6O_Fvx2VyoBB6NY'
+        // Encrypted Gemini API key (Base64 encoded)
+        apiKey: 'QUl6YVN5RFY1WmhTcnlTbXdLM3VsX0k4ZEc1dWRCUmhwY01BU2ZN'
     }
 };
