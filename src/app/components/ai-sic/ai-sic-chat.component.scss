@@ -1,3 +1,8 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
 .ai-sic-container {
   display: flex;
   flex-direction: column;
@@ -12,7 +17,7 @@
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 
   @media (max-width: 768px) {
-    height: calc(100vh - 110px); // Taller on mobile
+    height: calc(100dvh - 65px); // Full mobile viewport height minus header
     border-radius: 0 !important; // Flush with edges
     border-left: none;
     border-right: none;
@@ -569,49 +574,5 @@
   30% {
     transform: translateY(-10px);
     opacity: 1;
-  }
-}
-
-// Responsive Design
-@media (max-width: 768px) {
-  .ai-sic-container {
-    height: calc(100vh - 280px);
-    border-radius: 16px;
-  }
-
-  .chat-header {
-    padding: 1rem 1.25rem;
-  }
-
-  .header-icon {
-    width: 40px;
-    height: 40px;
-
-    .icon {
-      width: 24px;
-      height: 24px;
-    }
-  }
-
-  .header-text {
-    .header-title {
-      font-size: 1.25rem;
-    }
-
-    .header-subtitle {
-      font-size: 0.65rem;
-    }
-  }
-
-  .messages-container {
-    padding: 1rem;
-  }
-
-  .message-content {
-    max-width: 85%;
-  }
-
-  .input-container {
-    padding: 1rem 1.25rem;
   }
 }
